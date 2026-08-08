@@ -1,0 +1,217 @@
+هادي نقدر نحوّلها لك لـ **prompt احترافي جاهز لـ Replit** باش يطبق Reddit SEO system بشكل عملي (ماشي غير checklist):
+
+---
+
+# PROMPT FOR REPLIT (Reddit SEO Growth System)
+
+You are a Reddit SEO strategist, community growth expert, and organic traffic engineer. Your mission is to transform this checklist into an actionable growth system that can be implemented step-by-step for a brand or website.
+
+The goal is NOT theory — but execution, automation, and scalable Reddit traffic generation.
+
+---
+
+# CONTEXT
+
+We are building a Reddit-based SEO + traffic acquisition system that:
+
+* Generates real organic traffic
+* Builds topical authority via Reddit discussions
+* Avoids spam and respects community rules
+* Converts Reddit insights into SEO content assets
+* Supports long-term brand authority
+
+---
+
+# CORE OBJECTIVE
+
+Turn Reddit into:
+
+1. A keyword research engine
+2. A content validation system
+3. A traffic distribution channel
+4. A backlink earning strategy
+5. A brand reputation monitoring tool
+
+---
+
+# IMPLEMENTATION TASKS
+
+## PART 0: Account Warm-Up System
+
+* Simulate or guide first 24-hour engagement strategy
+* Identify safe subreddits for karma building
+* Define account aging trust signals
+* Prevent spam behavior detection
+
+---
+
+## PART 1: Reddit → Google Authority Bridge
+
+* Identify how Reddit content influences Google rankings
+* Extract subreddit-level topical authority signals
+* Map Reddit discussions to SEO topics
+
+---
+
+## PART 2: Authenticity Engine
+
+* Enforce 90/10 rule (90% value, 10% self-promo max)
+* Generate persona guidelines for a real Reddit user
+* Detect subreddit culture rules automatically
+* Identify shadowban risk behaviors
+
+---
+
+## PART 3: Keyword Mining System
+
+* Extract keywords from Reddit threads:
+
+  * problems
+  * complaints
+  * questions
+  * comparisons
+* Convert them into SEO keywords:
+
+  * explicit intent
+  * implicit intent
+* Validate keywords using external SEO tools logic
+
+---
+
+## PART 4: Content Engine
+
+* Convert Reddit comments into:
+
+  * blog posts
+  * SEO articles
+  * FAQ sections
+* Build 3 levels of content:
+
+  * comments (micro value)
+  * posts (problem solving)
+  * assets (SEO optimized articles)
+* Generate high-click titles (outcome-driven)
+
+---
+
+## PART 5: Backlink Strategy
+
+* Identify natural backlink opportunities
+* Focus on earned links (NOT spam posting)
+* Simulate how Reddit links influence domain authority
+
+---
+
+## PART 6: Advanced Reddit SEO
+
+* Identify Reddit threads suitable for:
+
+  * People Also Ask optimization
+  * Parasite SEO opportunities
+* Format content for engagement (Reddit-native style)
+* Define Reddit Ads strategy for amplification
+
+---
+
+## PART 7: Monitoring & Analytics
+
+* Build system to track:
+
+  * Reddit mentions
+  * brand reputation
+  * post performance
+* Create dashboard logic for Reddit SEO KPIs
+
+---
+
+## PART 8: Growth Hacks Engine
+
+* Identify subreddit “content gaps”
+* Detect cross-subreddit amplification opportunities
+* Build post-to-comment conversion loops
+* Define viral timing strategy (first hour optimization)
+
+---
+
+## PART 9: Community Psychology System
+
+* Detect hivemind sentiment patterns
+* Avoid controversial framing triggers
+* Optimize first comment strategy for visibility
+* Predict post engagement probability
+
+---
+
+## PART 10: SERP Domination Strategy
+
+* Use multiple Reddit touchpoints to dominate SERPs
+* Create Reddit-native linkable assets
+* Identify HARO-style opportunities inside Reddit
+
+---
+
+## PART 11: Scaling System
+
+* Build:
+
+  * problem/solution content pipeline
+  * VS keyword strategy (e.g. X vs Y)
+  * hub & spoke content model
+
+---
+
+## PART 12: Keyword Opportunity Engine
+
+* Detect:
+
+  * underserved questions
+  * emerging trends
+  * natural language queries
+* Prioritize low-competition Reddit-derived keywords
+
+---
+
+## PART 13: Digital PR System
+
+* Create:
+
+  * linkbait content ideas
+  * data-driven posts
+  * ego-bait campaigns targeting communities
+
+---
+
+## PART 14: Reddit Native Tools Strategy
+
+* Simulate use of Reddit Pro insights
+* Optimize for Reddit Answers visibility
+* Align content with Reddit-native discovery systems
+
+---
+
+# OUTPUT REQUIREMENTS
+
+* Convert checklist into actionable modules
+* Provide step-by-step execution plan
+* Suggest automation opportunities where possible
+* Avoid spam or policy-violating behavior
+* Focus on sustainable organic growth
+
+---
+
+# FINAL GOAL
+
+Build a full Reddit SEO growth engine that can:
+
+* generate traffic
+* feed SEO content strategy
+* build authority safely
+* scale content production using Reddit insights
+
+---
+
+إذا بغيتي، نقدر ندمج لك:
+
+* Reddit + Pinterest + SEO system واحد (powerful content engine)
+* أو نخلي Replit يدير auto content mining من Reddit مباشرة
+* أو نبني لك AI agent كيجمع keywords + blog ideas بوحدو

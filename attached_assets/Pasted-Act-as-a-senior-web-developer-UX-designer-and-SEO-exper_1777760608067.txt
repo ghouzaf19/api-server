@@ -1,0 +1,66 @@
+Act as a senior web developer, UX designer, and SEO expert.
+
+Analyze my current recipe blog and improve it by using https://www.mommafitlyndsey.com/ as a visual and structural reference for a high-quality food blog.
+
+GOALS:
+- Upgrade my blog design to a modern, professional food blog level
+- Improve user experience, readability, and engagement
+- Strengthen SEO structure and Pinterest readiness
+
+--------------------------------------
+1. DESIGN IMPROVEMENT
+--------------------------------------
+- Make the layout more modern and aesthetic like top food blogs
+- Improve spacing, typography, and visual hierarchy
+- Use a clean, editorial-style blog layout
+- Upgrade recipe cards to look more premium and clickable
+- Add better white space and visual balance
+
+--------------------------------------
+2. HOMEPAGE STRUCTURE
+--------------------------------------
+- Add a strong hero section (title + subtitle + featured image)
+- Add sections:
+  - Featured Recipes
+  - Latest Recipes
+  - Popular Categories
+- Make homepage feel like a real content brand
+
+--------------------------------------
+3. RECIPE PAGE IMPROVEMENT
+--------------------------------------
+Each recipe page must include:
+- Clear title (H1)
+- High-quality featured image
+- Clean ingredients section
+- Step-by-step instructions
+- Related recipes section
+- Category navigation links
+
+--------------------------------------
+4. NAVIGATION & STRUCTURE
+--------------------------------------
+- Improve navbar (Home, Recipes, Categories, About)
+- Add category-based browsing (Beef, Chicken, Quick Meals)
+- Add breadcrumb navigation for SEO
+
+--------------------------------------
+5. SEO OPTIMIZATION
+--------------------------------------
+- Improve heading structure (H1, H2, H3)
+- Add meta titles and descriptions
+- Optimize images with alt text
+- Strengthen internal linking between recipes and categories
+
+--------------------------------------
+6. PINTEREST READINESS
+--------------------------------------
+- Make images more vertical and visually appealing
+- Add hover effects and share buttons
+- Improve click-through appeal of recipe cards
+
+--------------------------------------
+IMPORTANT:
+Do not copy content from the reference site.
+Only use it as inspiration for layout, structure, and user experience improvements.
+Keep my site original, but upgrade it to a similar professional level.

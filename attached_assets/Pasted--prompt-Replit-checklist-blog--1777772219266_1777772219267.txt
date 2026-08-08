@@ -1,0 +1,115 @@
+هادي صياغة prompt مهيكلة تقدر تعطيها لـ Replit باش يطبّق هاد checklist على blog ديالك بطريقة عملية:
+
+---
+
+**PROMPT FOR REPLIT:**
+
+You are an SEO optimization assistant working on a content website. Your task is to audit, improve, and implement the following pending SEO and E-E-A-T requirements across all blog pages.
+
+### CONTEXT
+
+The website already has basic content published. Your job is to upgrade it to meet modern SEO standards (Google Search + Discover) with strong emphasis on E-E-A-T, performance, and content quality.
+
+---
+
+## COMPLETED TASKS (already done)
+
+No action needed for completed tasks.
+
+---
+
+## PENDING TASKS (must be implemented)
+
+### 1. Author & Trust Signals (E-E-A-T)
+
+* Create detailed author pages for each writer
+* Add clear publisher transparency page (About / Editorial Policy)
+* Ensure every article has:
+
+  * Clear byline (author name)
+  * Publication date + last updated date
+* Add author bio sections showing expertise and experience
+
+---
+
+### 2. Content Quality & Authenticity
+
+* Ensure content demonstrates first-hand experience (not generic AI text)
+* Add original visuals where possible (real images, custom graphics)
+* Avoid stock-only or repetitive visuals
+* Improve headlines to be:
+
+  * Honest
+  * Clickable but not clickbait
+  * SEO-optimized
+
+---
+
+### 3. External Authority & Credibility
+
+* Add citations from authoritative sources when needed
+* Link to trusted external references (official sites, studies, reputable blogs)
+* Avoid low-quality or spammy outbound links
+
+---
+
+### 4. Content Strategy
+
+* Mix:
+
+  * Evergreen content (long-term SEO value)
+  * Timely/trending content (for Discover traffic)
+* Regularly refresh old content:
+
+  * Update information
+  * Improve SEO structure
+  * Add new sections if needed
+
+---
+
+### 5. Visual Optimization
+
+* Use large, high-quality images
+* Enable image previews (OpenGraph / featured images)
+* Ensure images are optimized (compressed, fast loading)
+
+---
+
+### 6. Technical SEO
+
+* Optimize Core Web Vitals:
+
+  * Improve page speed
+  * Reduce layout shifts
+  * Optimize mobile performance
+* Implement structured data (Schema Markup):
+
+  * Articles
+  * Author
+  * Breadcrumbs
+  * Organization
+
+---
+
+### 7. Google Discover Optimization
+
+* Ensure content is visually rich and engaging
+* Use strong headlines + high-quality images
+* Maintain freshness and regular updates
+* Monitor performance using Google Search Console Discover report
+
+---
+
+## OUTPUT EXPECTATION
+
+* Apply changes directly to the codebase
+* Improve both frontend and SEO structure
+* Keep design clean, fast, and mobile-friendly
+* Prioritize Google SEO + Discover performance
+
+---
+
+If you want، نقدر نزيد لك نسخة أقوى فيها:
+
+* topical map كامل للblog ديالك
+* أو AI workflow يخلي Replit يولّد articles + SEO automatically

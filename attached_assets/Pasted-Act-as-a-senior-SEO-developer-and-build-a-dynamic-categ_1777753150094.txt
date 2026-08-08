@@ -1,0 +1,66 @@
+Act as a senior SEO developer and build a dynamic category system for my recipe blog.
+
+GOAL:
+Create fully indexable SEO-friendly category pages for recipes.
+
+--------------------------------------
+1. CATEGORY ROUTES
+--------------------------------------
+Create category pages with clean URLs like:
+
+/recipes/category/beef
+/recipes/category/chicken
+/recipes/category/quick-meals
+
+Each category page must dynamically show only recipes belonging to that category.
+
+--------------------------------------
+2. SEO FOR EACH CATEGORY PAGE
+--------------------------------------
+Each category page must have:
+
+- Unique SEO title (example: "Beef Recipes - High Protein Carnivore Meals")
+- Unique meta description optimized for Google
+- One H1 tag (category name)
+- Proper structured headings
+
+--------------------------------------
+3. PAGE CONTENT STRUCTURE
+--------------------------------------
+Each category page should include:
+
+- Category title (H1)
+- Short SEO description paragraph
+- Grid of recipe cards filtered by category
+- Each card links to full recipe page
+- "Related categories" section at bottom
+
+--------------------------------------
+4. INTERNAL LINKING
+--------------------------------------
+- Link all recipes to their category page
+- Link categories to each other (smart SEO linking)
+- Add breadcrumb navigation like:
+Home > Recipes > Beef
+
+--------------------------------------
+5. DESIGN
+--------------------------------------
+- Pinterest-style grid layout
+- Mobile responsive design
+- Clean modern UI
+- Hover effects on recipe cards
+
+--------------------------------------
+6. SEO BEST PRACTICE
+--------------------------------------
+- Ensure all category pages are indexable by Google
+- Avoid duplicate content issues
+- Add canonical tags if needed
+- Optimize images with alt text
+
+--------------------------------------
+BONUS
+--------------------------------------
+- Add "Most popular recipes in this category" section
+- Add filter by cooking time or difficulty (optional)

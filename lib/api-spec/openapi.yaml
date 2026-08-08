@@ -1,0 +1,1401 @@
+openapi: 3.1.0
+info:
+  # Do not change the title, if the title changes, the import paths will be broken
+  title: Api
+  version: 0.1.0
+  description: API specification
+servers:
+  - url: /api
+    description: Base API path
+tags:
+  - name: health
+    description: Health operations
+  - name: seo
+    description: SEO Blog Studio operations
+paths:
+  /healthz:
+    get:
+      operationId: healthCheck
+      tags: [health]
+      summary: Health check
+      description: Returns server health status
+      responses:
+        "200":
+          description: Healthy
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthStatus"
+
+  /seo/posts:
+    get:
+      operationId: listPosts
+      tags: [seo]
+      summary: List all saved blog posts
+      responses:
+        "200":
+          description: List of posts
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/BlogPost"
+    post:
+      operationId: createPost
+      tags: [seo]
+      summary: Save a blog post
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreatePostBody"
+      responses:
+        "201":
+          description: Created post
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BlogPost"
+
+  /seo/posts/by-slug/{slug}:
+    get:
+      operationId: getPostBySlug
+      tags: [seo]
+      summary: Get a single blog post by slug
+      parameters:
+        - name: slug
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Blog post
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BlogPost"
+        "404":
+          description: Not found
+
+  /seo/posts/{id}:
+    get:
+      operationId: getPost
+      tags: [seo]
+      summary: Get a single blog post by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Blog post
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BlogPost"
+        "404":
+          description: Not found
+    delete:
+      operationId: deletePost
+      tags: [seo]
+      summary: Delete a blog post
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Deleted
+
+  /seo/generate:
+    post:
+      operationId: generateBlogPost
+      tags: [seo]
+      summary: Generate a full SEO-optimized blog post
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GeneratePostBody"
+      responses:
+        "200":
+          description: Generated blog content
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GeneratedPost"
+
+  /seo/topical-authority:
+    post:
+      operationId: getTopicalAuthority
+      tags: [seo]
+      summary: Get internal link suggestions and content cluster map
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TopicalAuthorityBody"
+      responses:
+        "200":
+          description: Content cluster and link suggestions
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TopicalAuthorityResult"
+
+  /seo/info-gain:
+    post:
+      operationId: checkInfoGain
+      tags: [seo]
+      summary: Check information gain against typical competitor content
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/InfoGainBody"
+      responses:
+        "200":
+          description: Info gain analysis
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InfoGainResult"
+
+  /seo/eeat-enhance:
+    post:
+      operationId: enhanceEEAT
+      tags: [seo]
+      summary: Rewrite content section with E-E-A-T improvements
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/EEATBody"
+      responses:
+        "200":
+          description: Enhanced content
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EEATResult"
+
+  /seo/quality-check:
+    post:
+      operationId: qualityCheck
+      tags: [seo]
+      summary: Extract facts and flag weak or unverifiable claims
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/QualityCheckBody"
+      responses:
+        "200":
+          description: Quality check results
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/QualityCheckResult"
+
+  /seo/alt-text:
+    post:
+      operationId: generateAltText
+      tags: [seo]
+      summary: Generate SEO-friendly image alt text
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AltTextBody"
+      responses:
+        "200":
+          description: Alt text suggestions
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AltTextResult"
+
+  /seo/reddit-mine:
+    post:
+      operationId: mineRedditKeywords
+      tags: [seo]
+      summary: Extract SEO keyword opportunities from a Reddit thread or subreddit
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RedditMineBody"
+      responses:
+        "200":
+          description: Mined keywords and content ideas
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RedditMineResult"
+
+  /seo/roadmap-execute:
+    post:
+      operationId: executeRoadmap
+      tags: [seo]
+      summary: Execute an SEO roadmap JSON — analyze gaps and produce real implementations with before/after
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RoadmapExecuteBody"
+      responses:
+        "200":
+          description: Full roadmap execution with before/after implementations
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RoadmapExecuteResult"
+
+  /seo/google-audit:
+    post:
+      operationId: runGoogleAudit
+      tags: [seo]
+      summary: Run a full Google December 2025 Helpful Content & Quality Update audit
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GoogleAuditBody"
+      responses:
+        "200":
+          description: Full audit report with scored pillars and recommendations
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GoogleAuditResult"
+
+  /seo/content-refresh:
+    post:
+      operationId: refreshContent
+      tags: [seo]
+      summary: Identify low-hanging fruit keywords and inject them into the Three Kings
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ContentRefreshBody"
+      responses:
+        "200":
+          description: Content refresh recommendations
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ContentRefreshResult"
+
+  /seo/prompt-alchemist:
+    post:
+      operationId: alchemizePrompt
+      tags: [seo]
+      summary: Transform a simple topic into high-impact, human-written blog prompts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PromptAlchemistBody"
+      responses:
+        "200":
+          description: Set of crafted blog prompts
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PromptAlchemistResult"
+
+  /seo/doc-to-blog/analyze:
+    post:
+      operationId: analyzeDocument
+      tags: [seo]
+      summary: Phase 1 — analyze a document and produce a blog transformation plan
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DocAnalyzeBody"
+      responses:
+        "200":
+          description: Document analysis and blog strategy
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DocAnalyzeResult"
+
+  /seo/doc-to-blog/generate:
+    post:
+      operationId: generateDocBlog
+      tags: [seo]
+      summary: Phase 2 — generate a full human-style blog post from a document
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DocGenerateBody"
+      responses:
+        "200":
+          description: Full human-style blog post
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DocGenerateResult"
+
+components:
+  schemas:
+    HealthStatus:
+      type: object
+      properties:
+        status:
+          type: string
+      required:
+        - status
+
+    BlogPost:
+      type: object
+      properties:
+        id:
+          type: string
+        topic:
+          type: string
+        niche:
+          type: string
+        title:
+          type: string
+        slug:
+          type: string
+          nullable: true
+        featuredImage:
+          type: string
+          nullable: true
+        pinterestImage:
+          type: string
+          nullable: true
+        outline:
+          type: string
+        content:
+          type: string
+        seoScore:
+          type: number
+        wordCount:
+          type: number
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+      required:
+        - id
+        - topic
+        - niche
+        - title
+        - slug
+        - featuredImage
+        - pinterestImage
+        - outline
+        - content
+        - seoScore
+        - wordCount
+        - createdAt
+        - updatedAt
+
+    CreatePostBody:
+      type: object
+      properties:
+        topic:
+          type: string
+        niche:
+          type: string
+        title:
+          type: string
+        outline:
+          type: string
+        content:
+          type: string
+        seoScore:
+          type: number
+        wordCount:
+          type: number
+        customImage:
+          type: string
+          nullable: true
+      required:
+        - topic
+        - niche
+        - title
+        - outline
+        - content
+        - seoScore
+        - wordCount
+
+    GeneratePostBody:
+      type: object
+      properties:
+        topic:
+          type: string
+        niche:
+          type: string
+      required:
+        - topic
+        - niche
+
+    GeneratedPost:
+      type: object
+      properties:
+        title:
+          type: string
+        outline:
+          type: string
+        content:
+          type: string
+        seoScore:
+          type: number
+        wordCount:
+          type: number
+        readabilityTips:
+          type: array
+          items:
+            type: string
+      required:
+        - title
+        - outline
+        - content
+        - seoScore
+        - wordCount
+        - readabilityTips
+
+    TopicalAuthorityBody:
+      type: object
+      properties:
+        topic:
+          type: string
+        niche:
+          type: string
+        existingPosts:
+          type: array
+          items:
+            type: string
+      required:
+        - topic
+        - niche
+        - existingPosts
+
+    TopicalAuthorityResult:
+      type: object
+      properties:
+        pillarTopic:
+          type: string
+        clusterTopics:
+          type: array
+          items:
+            type: string
+        internalLinks:
+          type: array
+          items:
+            $ref: "#/components/schemas/InternalLink"
+        missingClusterTopics:
+          type: array
+          items:
+            type: string
+      required:
+        - pillarTopic
+        - clusterTopics
+        - internalLinks
+        - missingClusterTopics
+
+    InternalLink:
+      type: object
+      properties:
+        anchorText:
+          type: string
+        targetPost:
+          type: string
+        reason:
+          type: string
+      required:
+        - anchorText
+        - targetPost
+        - reason
+
+    InfoGainBody:
+      type: object
+      properties:
+        topic:
+          type: string
+        niche:
+          type: string
+        outline:
+          type: string
+      required:
+        - topic
+        - niche
+        - outline
+
+    InfoGainResult:
+      type: object
+      properties:
+        coveredPoints:
+          type: array
+          items:
+            type: string
+        missingPoints:
+          type: array
+          items:
+            type: string
+        uniqueAngle:
+          type: string
+        competitorGaps:
+          type: array
+          items:
+            type: string
+        gainScore:
+          type: number
+      required:
+        - coveredPoints
+        - missingPoints
+        - uniqueAngle
+        - competitorGaps
+        - gainScore
+
+    EEATBody:
+      type: object
+      properties:
+        content:
+          type: string
+        niche:
+          type: string
+        authorPersona:
+          type: string
+      required:
+        - content
+        - niche
+        - authorPersona
+
+    EEATResult:
+      type: object
+      properties:
+        enhancedContent:
+          type: string
+        changesApplied:
+          type: array
+          items:
+            type: string
+        eeатScore:
+          type: number
+      required:
+        - enhancedContent
+        - changesApplied
+        - eeатScore
+
+    QualityCheckBody:
+      type: object
+      properties:
+        content:
+          type: string
+      required:
+        - content
+
+    QualityCheckResult:
+      type: object
+      properties:
+        facts:
+          type: array
+          items:
+            $ref: "#/components/schemas/FactItem"
+        flaggedClaims:
+          type: array
+          items:
+            $ref: "#/components/schemas/FlaggedClaim"
+        overallRisk:
+          type: string
+        readabilityScore:
+          type: number
+      required:
+        - facts
+        - flaggedClaims
+        - overallRisk
+        - readabilityScore
+
+    FactItem:
+      type: object
+      properties:
+        fact:
+          type: string
+        verifiable:
+          type: boolean
+        category:
+          type: string
+      required:
+        - fact
+        - verifiable
+        - category
+
+    FlaggedClaim:
+      type: object
+      properties:
+        claim:
+          type: string
+        reason:
+          type: string
+        severity:
+          type: string
+      required:
+        - claim
+        - reason
+        - severity
+
+    AltTextBody:
+      type: object
+      properties:
+        imageDescription:
+          type: string
+        context:
+          type: string
+        count:
+          type: number
+      required:
+        - imageDescription
+        - context
+
+    AltTextResult:
+      type: object
+      properties:
+        suggestions:
+          type: array
+          items:
+            $ref: "#/components/schemas/AltTextSuggestion"
+      required:
+        - suggestions
+
+    AltTextSuggestion:
+      type: object
+      properties:
+        altText:
+          type: string
+        characterCount:
+          type: number
+        seoNotes:
+          type: string
+      required:
+        - altText
+        - characterCount
+        - seoNotes
+
+    RedditMineBody:
+      type: object
+      properties:
+        input:
+          type: string
+          description: Reddit thread text, subreddit name, or pasted comments to analyze
+        niche:
+          type: string
+          description: The blog niche or topic area (e.g. BBQ & Grilling)
+      required:
+        - input
+        - niche
+
+    RedditKeyword:
+      type: object
+      properties:
+        keyword:
+          type: string
+        intent:
+          type: string
+          description: explicit | implicit | comparison | problem
+        volume:
+          type: string
+          description: high | medium | low (estimated)
+        difficulty:
+          type: string
+          description: easy | medium | hard
+        blogTitle:
+          type: string
+          description: A ready-to-use SEO blog title targeting this keyword
+      required:
+        - keyword
+        - intent
+        - volume
+        - difficulty
+        - blogTitle
+
+    RedditContentIdea:
+      type: object
+      properties:
+        title:
+          type: string
+        type:
+          type: string
+          description: blog-post | faq | vs-comparison | how-to | listicle
+        angle:
+          type: string
+          description: What unique angle makes this stand out
+        redditSignal:
+          type: string
+          description: The Reddit insight that inspired this idea
+      required:
+        - title
+        - type
+        - angle
+        - redditSignal
+
+    RedditMineResult:
+      type: object
+      properties:
+        keywords:
+          type: array
+          items:
+            $ref: "#/components/schemas/RedditKeyword"
+        contentIdeas:
+          type: array
+          items:
+            $ref: "#/components/schemas/RedditContentIdea"
+        userPains:
+          type: array
+          items:
+            type: string
+          description: Real user problems and complaints identified
+        vsKeywords:
+          type: array
+          items:
+            type: string
+          description: Comparison/VS keywords found (e.g. "charcoal vs gas grill")
+        faqQuestions:
+          type: array
+          items:
+            type: string
+          description: Questions suitable for FAQ sections or People Also Ask
+        summary:
+          type: string
+          description: Brief summary of the SEO opportunity found in this content
+      required:
+        - keywords
+        - contentIdeas
+        - userPains
+        - vsKeywords
+        - faqQuestions
+        - summary
+
+    RoadmapExecuteBody:
+      type: object
+      properties:
+        roadmapJson:
+          type: string
+          description: The SEO roadmap as a JSON string
+        roadmap2Json:
+          type: string
+          description: Optional second roadmap JSON (e.g. WebMCP/AI Agent roadmap)
+        postTitle:
+          type: string
+          description: Current blog post title to use as the example
+        postContent:
+          type: string
+          description: Current blog post content to analyze and improve
+        niche:
+          type: string
+          description: Blog niche (e.g. Meat recipes / Carnivore diet)
+        blogUrl:
+          type: string
+      required:
+        - roadmapJson
+        - postTitle
+        - postContent
+        - niche
+
+    RoadmapTaskResult:
+      type: object
+      properties:
+        taskId:
+          type: number
+        title:
+          type: string
+        category:
+          type: string
+        priority:
+          type: string
+        gapAnalysis:
+          type: string
+          description: What is currently missing or weak in the content
+        before:
+          type: string
+          description: The current state (excerpt or description)
+        after:
+          type: string
+          description: The improved version with the strategy applied
+        implementations:
+          type: array
+          items:
+            type: string
+          description: Specific things that were changed or should be changed
+        impactScore:
+          type: number
+          description: 0-100 estimated impact on traffic/rankings
+      required:
+        - taskId
+        - title
+        - category
+        - priority
+        - gapAnalysis
+        - before
+        - after
+        - implementations
+        - impactScore
+
+    PinterestPin:
+      type: object
+      properties:
+        title:
+          type: string
+        hook:
+          type: string
+        imageIdea:
+          type: string
+        boardSuggestion:
+          type: string
+      required:
+        - title
+        - hook
+        - imageIdea
+        - boardSuggestion
+
+    BacklinkTarget:
+      type: object
+      properties:
+        website:
+          type: string
+        type:
+          type: string
+          description: guest-post | resource-link | community | directory | collaboration
+        approach:
+          type: string
+      required:
+        - website
+        - type
+        - approach
+
+    WebMCPTool:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        code:
+          type: string
+          description: The actual HTML or JS implementation code
+        usage:
+          type: string
+          description: How an AI agent would call or use this tool
+      required:
+        - name
+        - description
+        - code
+        - usage
+
+    WebMCPResult:
+      type: object
+      properties:
+        setupSteps:
+          type: array
+          items:
+            type: string
+        declarativeTools:
+          type: array
+          items:
+            $ref: "#/components/schemas/WebMCPTool"
+        imperativeTools:
+          type: array
+          items:
+            $ref: "#/components/schemas/WebMCPTool"
+        actiondataSeo:
+          type: object
+          additionalProperties: true
+          description: Actiondata SEO manifest and recommendations
+        taskResults:
+          type: array
+          items:
+            $ref: "#/components/schemas/RoadmapTaskResult"
+      required:
+        - setupSteps
+        - declarativeTools
+        - imperativeTools
+        - actiondataSeo
+        - taskResults
+
+    RoadmapExecuteResult:
+      type: object
+      properties:
+        taskResults:
+          type: array
+          items:
+            $ref: "#/components/schemas/RoadmapTaskResult"
+        optimizedPost:
+          type: object
+          additionalProperties: true
+          description: Fully rewritten/optimized version of the example blog post
+        homepageStructure:
+          type: array
+          items:
+            type: string
+          description: Recommended homepage section structure
+        keywords:
+          type: array
+          items:
+            type: string
+          description: 10 SEO keyword ideas for the niche
+        pinterestStrategy:
+          type: array
+          items:
+            $ref: "#/components/schemas/PinterestPin"
+        backlinkTargets:
+          type: array
+          items:
+            $ref: "#/components/schemas/BacklinkTarget"
+        overallPriorityOrder:
+          type: array
+          items:
+            type: string
+          description: Recommended execution order for all tasks
+        webmcp:
+          $ref: "#/components/schemas/WebMCPResult"
+          description: WebMCP/AI Agent implementation results (present when roadmap2Json is provided)
+      required:
+        - taskResults
+        - optimizedPost
+        - homepageStructure
+        - keywords
+        - pinterestStrategy
+        - backlinkTargets
+        - overallPriorityOrder
+
+    GoogleAuditBody:
+      type: object
+      properties:
+        postTitle:
+          type: string
+          description: Title of the blog post or page to audit
+        postContent:
+          type: string
+          description: The full content of the blog post (HTML or plain text)
+        blogUrl:
+          type: string
+          description: Optional URL of the blog for context
+        niche:
+          type: string
+          description: The blog niche (e.g. BBQ & Grilling / Meat Lovers)
+      required:
+        - postTitle
+        - postContent
+        - niche
+
+    AuditPillar:
+      type: object
+      properties:
+        pillar:
+          type: string
+          description: Name of the audit pillar
+        score:
+          type: number
+          description: 0-100 score for this pillar
+        status:
+          type: string
+          description: good | needs-work | critical
+        findings:
+          type: array
+          items:
+            type: string
+          description: Specific issues found
+        recommendations:
+          type: array
+          items:
+            type: string
+          description: Specific actionable fixes for this pillar
+      required:
+        - pillar
+        - score
+        - status
+        - findings
+        - recommendations
+
+    GoogleAuditResult:
+      type: object
+      properties:
+        overallScore:
+          type: number
+          description: Weighted overall audit score 0-100
+        overallStatus:
+          type: string
+          description: passing | at-risk | failing
+        pillars:
+          type: array
+          items:
+            $ref: "#/components/schemas/AuditPillar"
+        topPriorities:
+          type: array
+          items:
+            type: string
+          description: The 3 most impactful fixes to do first
+        discoverReadiness:
+          type: string
+          description: Assessment of Google Discover potential
+        suggestedKeywords:
+          type: array
+          items:
+            type: string
+          description: SEO keywords for the niche (meat recipes / carnivore / BBQ)
+        rewrittenIntro:
+          type: string
+          description: A rewritten, human-style engaging intro paragraph as example
+        quickWins:
+          type: array
+          items:
+            type: string
+          description: Changes that take under 15 minutes but have high impact
+      required:
+        - overallScore
+        - overallStatus
+        - pillars
+        - topPriorities
+        - discoverReadiness
+        - suggestedKeywords
+        - rewrittenIntro
+        - quickWins
+
+    KeywordRankEntry:
+      type: object
+      properties:
+        keyword:
+          type: string
+        position:
+          type: number
+        clicks:
+          type: number
+        impressions:
+          type: number
+      required:
+        - keyword
+        - position
+
+    ContentRefreshBody:
+      type: object
+      properties:
+        postTitle:
+          type: string
+          description: Current title/H1 of the blog post
+        postContent:
+          type: string
+          description: Optional — current body content or intro paragraph
+        keywords:
+          type: array
+          items:
+            $ref: "#/components/schemas/KeywordRankEntry"
+          description: Keywords with their current Google ranking positions
+        niche:
+          type: string
+          description: The blog niche (e.g. BBQ & Grilling)
+      required:
+        - postTitle
+        - keywords
+        - niche
+
+    LowHangingKeyword:
+      type: object
+      properties:
+        keyword:
+          type: string
+        position:
+          type: number
+        clicks:
+          type: number
+        impressions:
+          type: number
+        opportunityScore:
+          type: number
+          description: 0-100 score for refresh opportunity
+        reasoning:
+          type: string
+      required:
+        - keyword
+        - position
+        - opportunityScore
+        - reasoning
+
+    ContentRefreshResult:
+      type: object
+      properties:
+        lowHangingFruit:
+          type: array
+          items:
+            $ref: "#/components/schemas/LowHangingKeyword"
+          description: Keywords in positions 5-15 sorted by opportunity
+        recommendedKeyword:
+          type: string
+        recommendedKeywordReason:
+          type: string
+        refreshedTitle:
+          type: string
+          description: New title tag with keyword injected naturally
+        refreshedH1:
+          type: string
+          description: New H1 heading with keyword injected naturally
+        refreshedFirstSentence:
+          type: string
+          description: New opening sentence with keyword woven in naturally
+        additionalSuggestions:
+          type: array
+          items:
+            type: string
+          description: Extra refresh tips (meta description, internal links, etc.)
+        estimatedTrafficLift:
+          type: string
+          description: Rough estimate of potential traffic improvement
+      required:
+        - lowHangingFruit
+        - recommendedKeyword
+        - recommendedKeywordReason
+        - refreshedTitle
+        - refreshedH1
+        - refreshedFirstSentence
+        - additionalSuggestions
+        - estimatedTrafficLift
+
+    PromptAlchemistBody:
+      type: object
+      properties:
+        topic:
+          type: string
+          description: The keyword, topic idea, or customer pain point to transform
+        category:
+          type: string
+          description: The strategic category (e.g. Contrarian & Disruptive)
+        technique:
+          type: string
+          description: The specific technique within the category (e.g. The Myth Buster)
+        niche:
+          type: string
+          description: The blog niche (e.g. BBQ & Grilling)
+        inspireMode:
+          type: boolean
+          description: If true, pick a random technique and generate a surprise prompt set
+      required:
+        - topic
+        - niche
+
+    AlchemizedPrompt:
+      type: object
+      properties:
+        title:
+          type: string
+          description: A compelling, specific blog post title
+        angle:
+          type: string
+          description: The unique storytelling or content angle
+        hook:
+          type: string
+          description: An opening sentence or paragraph hook for the post
+        outline:
+          type: array
+          items:
+            type: string
+          description: 4-6 section headings that structure the post
+        whyItWorks:
+          type: string
+          description: Brief explanation of why this prompt resonates with readers
+      required:
+        - title
+        - angle
+        - hook
+        - outline
+        - whyItWorks
+
+    PromptAlchemistResult:
+      type: object
+      properties:
+        prompts:
+          type: array
+          items:
+            $ref: "#/components/schemas/AlchemizedPrompt"
+        techniqueUsed:
+          type: string
+          description: The technique that was applied (useful when inspireMode=true)
+        categoryUsed:
+          type: string
+          description: The category that was applied (useful when inspireMode=true)
+        topicInsight:
+          type: string
+          description: A brief insight into what makes this topic compelling
+      required:
+        - prompts
+        - techniqueUsed
+        - categoryUsed
+        - topicInsight
+
+    DocAnalyzeBody:
+      type: object
+      properties:
+        documentText:
+          type: string
+          description: The raw text content of the document to transform
+        targetAudience:
+          type: string
+          description: Optional target audience override (e.g. "home cooks aged 30-50")
+        tone:
+          type: string
+          description: Optional tone override (e.g. "conversational", "professional")
+        niche:
+          type: string
+          description: The blog niche or topic area
+      required:
+        - documentText
+        - niche
+
+    DocKeyPoint:
+      type: object
+      properties:
+        point:
+          type: string
+        importance:
+          type: string
+          description: high | medium | low
+      required:
+        - point
+        - importance
+
+    DocAnalyzeResult:
+      type: object
+      properties:
+        documentType:
+          type: string
+          description: e.g. "research paper", "news article", "technical guide"
+        detectedLanguage:
+          type: string
+        mainTopic:
+          type: string
+        coreMessage:
+          type: string
+        targetAudience:
+          type: string
+        keyPoints:
+          type: array
+          items:
+            $ref: "#/components/schemas/DocKeyPoint"
+        technicalTerms:
+          type: array
+          items:
+            type: string
+          description: Terms that need simplification for a general audience
+        originalTone:
+          type: string
+        whatIsMissing:
+          type: string
+          description: What would make this more engaging for blog readers
+        recommendedBlogAudience:
+          type: string
+        recommendedHook:
+          type: string
+        recommendedTone:
+          type: string
+        suggestedTitle:
+          type: string
+        suggestedSections:
+          type: array
+          items:
+            type: string
+          description: Suggested H2 section titles for the blog post
+        seoKeywords:
+          type: array
+          items:
+            type: string
+      required:
+        - documentType
+        - detectedLanguage
+        - mainTopic
+        - coreMessage
+        - targetAudience
+        - keyPoints
+        - technicalTerms
+        - originalTone
+        - whatIsMissing
+        - recommendedBlogAudience
+        - recommendedHook
+        - recommendedTone
+        - suggestedTitle
+        - suggestedSections
+        - seoKeywords
+
+    DocGenerateBody:
+      type: object
+      properties:
+        documentText:
+          type: string
+          description: The original document text
+        analysis:
+          type: object
+          description: The DocAnalyzeResult from phase 1 (passed back to generate)
+          additionalProperties: true
+        targetAudience:
+          type: string
+        tone:
+          type: string
+        niche:
+          type: string
+        specialFocus:
+          type: string
+          description: Any specific angle or element to emphasize
+      required:
+        - documentText
+        - analysis
+        - niche
+
+    DocGenerateResult:
+      type: object
+      properties:
+        title:
+          type: string
+        metaDescription:
+          type: string
+        content:
+          type: string
+          description: Full blog post in HTML format with proper H1/H2 structure
+        wordCount:
+          type: number
+        seoScore:
+          type: number
+        humanScore:
+          type: number
+          description: 0-100 estimate of how human the writing sounds
+        keyTakeaways:
+          type: array
+          items:
+            type: string
+        readabilityTips:
+          type: array
+          items:
+            type: string
+      required:
+        - title
+        - metaDescription
+        - content
+        - wordCount
+        - seoScore
+        - humanScore
+        - keyTakeaways
+        - readabilityTips

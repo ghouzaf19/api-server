@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary SEO -->
+    <title>Meat Lovers Hub — Delicious & Easy Meat Recipes</title>
+    <meta name="description" content="Foolproof, restaurant-quality meat recipes you can master at home. Ribeye steak, BBQ ribs, smash burgers, grilled chicken and more." />
+    <meta name="keywords" content="meat recipes, steak recipe, BBQ ribs, grilled chicken, smash burger, easy dinner recipes, meat lovers" />
+    <meta name="author" content="Meat Lovers Hub" />
+    <link rel="canonical" href="https://www.meatlovershub.com/" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Meat Lovers Hub" />
+    <meta property="og:title" content="Meat Lovers Hub — Delicious & Easy Meat Recipes" />
+    <meta property="og:description" content="Foolproof, restaurant-quality meat recipes you can master at home. Ribeye steak, BBQ ribs, smash burgers, grilled chicken and more." />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1558030006-450675393462?w=1200&h=630&fit=crop&q=85" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:url" content="https://www.meatlovershub.com/" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Meat Lovers Hub — Delicious & Easy Meat Recipes" />
+    <meta name="twitter:description" content="Foolproof, restaurant-quality meat recipes you can master at home." />
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1558030006-450675393462?w=1200&h=630&fit=crop&q=85" />
+
+    <!-- Pinterest -->
+    <meta name="pinterest-rich-pin" content="true" />
+    <meta property="og:image:alt" content="Juicy perfectly seared steak with garlic butter and fresh herbs" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- RSS Feed Discovery -->
+    <link rel="alternate" type="application/rss+xml" title="Meat Lovers Hub — New Recipes" href="/rss.xml" />
+
+    <!-- Sitemap reference for crawlers -->
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+
+    <!-- Google Search Console verification (meta tag method) -->
+    <meta name="google-site-verification" content="9ziSx8H_pvOJH0ldDaQiTUUOs3652TFwH1paabYwPT0" />
+
+    <!-- Pinterest domain verification -->
+    <meta name="p:domain_verify" content="8fe897b23637fbf8b0d9ff8bf129b885" />
+
+    <!-- Robots: allow large image previews for Discover -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+
+    <!-- Fonts preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Fonts: preload the CSS descriptor, then swap to stylesheet asynchronously (non-blocking) -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" />
+    <link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" /></noscript>
+
+    <!-- Image CDN preconnect — all recipe photos load from Unsplash -->
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+    <link rel="dns-prefetch" href="https://images.unsplash.com" />
+
+    <!-- Preload LCP hero image so browser fetches it before JS renders -->
+    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1558030006-450675393462?w=1200&q=80&auto=format&fit=crop" fetchpriority="high" />
+
+    <!-- Google Consent Mode v2 — MUST run before GA4 / GTM -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+
+      // Default: deny all tracking until user consents
+      gtag('consent', 'default', {
+        ad_storage:           'denied',
+        analytics_storage:    'denied',
+        ad_user_data:         'denied',
+        ad_personalization:   'denied',
+        functionality_storage:'granted',
+        security_storage:     'granted',
+        wait_for_update:       500
+      });
+
+      // Restore consent from previous session immediately (no banner flash)
+      (function() {
+        try {
+          var saved = localStorage.getItem('mlh_consent');
+          if (saved === 'granted') {
+            gtag('consent', 'update', {
+              ad_storage:         'granted',
+              analytics_storage:  'granted',
+              ad_user_data:       'granted',
+              ad_personalization: 'granted'
+            });
+          }
+        } catch(e) {}
+      })();
+
+      // Global helper called by the cookie banner
+      window.updateConsent = function(granted) {
+        gtag('consent', 'update', {
+          ad_storage:         granted ? 'granted' : 'denied',
+          analytics_storage:  granted ? 'granted' : 'denied',
+          ad_user_data:       granted ? 'granted' : 'denied',
+          ad_personalization: granted ? 'granted' : 'denied'
+        });
+        try { localStorage.setItem('mlh_consent', granted ? 'granted' : 'denied'); } catch(e) {}
+      };
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9CQL0CLQME"></script>
+    <script src="/analytics.js" defer></script>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KVBZ2QZT');</script>
+    <!-- End Google Tag Manager -->
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KVBZ2QZT"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

@@ -1,0 +1,185 @@
+Contrast
+The background and foreground colors do not contrast sufficiently.
+Low-contrast text is difficult, or even impossible, for many users to read. Learn how to provide sufficient color contrast.
+Non-compliant elements
+SEE ALL RECIPES
+<a href="#recipes" data-testid="link-hero-cta" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+BROWSE BY CATEGORY
+<p style="font-family: Outfit, sans-serif; font-size: 0.7rem; font-weight: 600;">
+New recipe just dropped: Carnivore Steak and Eggs (High Protein Breakfast) → Ma…
+<div class="min-h-screen w-full flex flex-col" style="background: rgb(249, 246, 241); font-family: Outfit, sans-serif;">
+MOST SAVED ON PINTEREST
+<p style="font-family: Outfit, sans-serif; font-size: 0.7rem; font-weight: 600;">
+New recipe just dropped: Carnivore Steak and Eggs (High Protein Breakfast) → Ma…
+<div class="min-h-screen w-full flex flex-col" style="background: rgb(249, 246, 241); font-family: Outfit, sans-serif;">
+View all
+<a href="#recipes" style="font-family: Outfit, sans-serif; font-size: 0.78rem; font-weight: 600;">
+New recipe just dropped: Carnivore Steak and Eggs (High Protein Breakfast) → Ma…
+<div class="min-h-screen w-full flex flex-col" style="background: rgb(249, 246, 241); font-family: Outfit, sans-serif;">
+QUICK & SIMPLE
+<p style="font-family: Outfit, sans-serif; font-size: 0.7rem; font-weight: 600;">
+QUICK & SIMPLE Easy Recipes See all easy EASY 45 min Serves 4 This Grilled Chi…
+<section class="py-12 w-full" aria-labelledby="easy-heading" style="background: rgb(240, 235, 226);">
+See all easy
+<button data-testid="button-show-all-easy" tabindex="0" style="font-family: Outfit, sans-serif; font-size: 0.78rem; font-weight: 600;">
+QUICK & SIMPLE Easy Recipes See all easy EASY 45 min Serves 4 This Grilled Chi…
+<section class="py-12 w-full" aria-labelledby="easy-heading" style="background: rgb(240, 235, 226);">
+NEW
+<span style="font-family: Outfit, sans-serif; font-size: 0.6rem; font-weight: 800;">
+JUST ADDED
+<span style="font-family: Outfit, sans-serif; font-size: 0.68rem; font-weight: 600;">
+NEW JUST ADDED Latest Drops RSS Feed NEW 20 min May 2, 2026 Carnivore Steak and…
+<section aria-labelledby="latest-heading" style="background: rgb(255, 255, 255); border-top: 1px solid rgb(234, 229, 220);">
+RSS Feed
+<a href="/rss.xml" aria-label="Subscribe to RSS feed" style="display: inline-flex; align-items: center; gap: 0.4rem; font-family: Outfi…;">
+NEW JUST ADDED Latest Drops RSS Feed NEW 20 min May 2, 2026 Carnivore Steak and…
+<section aria-labelledby="latest-heading" style="background: rgb(255, 255, 255); border-top: 1px solid rgb(234, 229, 220);">
+OUR COLLECTION
+<p style="font-family: Outfit, sans-serif; font-size: 0.7rem; font-weight: 600;">
+New recipe just dropped: Carnivore Steak and Eggs (High Protein Breakfast) → Ma…
+<div class="min-h-screen w-full flex flex-col" style="background: rgb(249, 246, 241); font-family: Outfit, sans-serif;">
+#STEAK
+<button aria-pressed="false" data-testid="tag-pill-steak" tabindex="0" style="font-family: Outfit, sans-serif; font-size: 0.72rem; font-weight: 600;">
+New recipe just dropped: Carnivore Steak and Eggs (High Protein Breakfast) → Ma…
+<div class="min-h-screen w-full flex flex-col" style="background: rgb(249, 246, 241); font-family: Outfit, sans-serif;">
+#BEEF
+<button aria-pressed="false" data-testid="tag-pill-beef" tabindex="0" style="font-family: Outfit, sans-serif; font-size: 0.72rem; font-weight: 600;">
+New recipe just dropped: Carnivore Steak and Eggs (High Protein Breakfast) → Ma…
+<div class="min-h-screen w-full flex flex-col" style="background: rgb(249, 246, 241); font-family: Outfit, sans-serif;">
+#QUICK DINNER
+<button aria-pressed="false" data-testid="tag-pill-quick-dinner" tabindex="0" style="font-family: Outfit, sans-serif; font-size: 0.72rem; font-weight: 600;">
+New recipe just dropped: Carnivore Steak and Eggs (High Protein Breakfast) → Ma…
+<div class="min-h-screen w-full flex flex-col" style="background: rgb(249, 246, 241); font-family: Outfit, sans-serif;">
+#WEEKNIGHT
+<button aria-pressed="false" data-testid="tag-pill-weeknight" tabindex="0" style="font-family: Outfit, sans-serif; font-size: 0.72rem; font-weight: 600;">
+New recipe just dropped: Carnivore Steak and Eggs (High Protein Breakfast) → Ma…
+<div class="min-h-screen w-full flex flex-col" style="background: rgb(249, 246, 241); font-family: Outfit, sans-serif;">
+#GARLIC BUTTER
+<button aria-pressed="false" data-testid="tag-pill-garlic-butter" tabindex="0" style="font-family: Outfit, sans-serif; font-size: 0.72rem; font-weight: 600;">
+New recipe just dropped: Carnivore Steak and Eggs (High Protein Breakfast) → Ma…
+<div class="min-h-screen w-full flex flex-col" style="background: rgb(249, 246, 241); font-family: Outfit, sans-serif;">
+#CARNIVORE DIET
+<button aria-pressed="false" data-testid="tag-pill-carnivore-diet" tabindex="0" style="font-family: Outfit, sans-serif; font-size: 0.72rem; font-weight: 600;">
+New recipe just dropped: Carnivore Steak and Eggs (High Protein Breakfast) → Ma…
+<div class="min-h-screen w-full flex flex-col" style="background: rgb(249, 246, 241); font-family: Outfit, sans-serif;">
+#HIGH PROTEIN
+<button aria-pressed="false" data-testid="tag-pill-high-protein" tabindex="0" style="font-family: Outfit, sans-serif; font-size: 0.72rem; font-weight: 600;">
+New recipe just dropped: Carnivore Steak and Eggs (High Protein Breakfast) → Ma…
+<div class="min-h-screen w-full flex flex-col" style="background: rgb(249, 246, 241); font-family: Outfit, sans-serif;">
+#HOW TO COOK RIBEYE
+<button aria-pressed="false" data-testid="tag-pill-how-to-cook-ribeye" tabindex="0" style="font-family: Outfit, sans-serif; font-size: 0.72rem; font-weight: 600;">
+New recipe just dropped: Carnivore Steak and Eggs (High Protein Breakfast) → Ma…
+<div class="min-h-screen w-full flex flex-col" style="background: rgb(249, 246, 241); font-family: Outfit, sans-serif;">
+DIFFICULTY
+<span style="font-family: Outfit, sans-serif; font-size: 0.7rem; font-weight: 600;">
+New recipe just dropped: Carnivore Steak and Eggs (High Protein Breakfast) → Ma…
+<div class="min-h-screen w-full flex flex-col" style="background: rgb(249, 246, 241); font-family: Outfit, sans-serif;">
+Easy
+<button data-testid="filter-difficulty-easy" tabindex="0" style="font-family: Outfit, sans-serif; font-size: 0.76rem; font-weight: 600;">
+New recipe just dropped: Carnivore Steak and Eggs (High Protein Breakfast) → Ma…
+<div class="min-h-screen w-full flex flex-col" style="background: rgb(249, 246, 241); font-family: Outfit, sans-serif;">
+Medium
+<button data-testid="filter-difficulty-medium" tabindex="0" style="font-family: Outfit, sans-serif; font-size: 0.76rem; font-weight: 600;">
+New recipe just dropped: Carnivore Steak and Eggs (High Protein Breakfast) → Ma…
+<div class="min-h-screen w-full flex flex-col" style="background: rgb(249, 246, 241); font-family: Outfit, sans-serif;">
+Hard
+<button data-testid="filter-difficulty-hard" tabindex="0" style="font-family: Outfit, sans-serif; font-size: 0.76rem; font-weight: 600;">
+New recipe just dropped: Carnivore Steak and Eggs (High Protein Breakfast) → Ma…
+<div class="min-h-screen w-full flex flex-col" style="background: rgb(249, 246, 241); font-family: Outfit, sans-serif;">
+TIME
+<span style="font-family: Outfit, sans-serif; font-size: 0.7rem; font-weight: 600;">
+New recipe just dropped: Carnivore Steak and Eggs (High Protein Breakfast) → Ma…
+<div class="min-h-screen w-full flex flex-col" style="background: rgb(249, 246, 241); font-family: Outfit, sans-serif;">
+Quick (≤30 min)
+<button data-testid="filter-time-quick" tabindex="0" style="font-family: Outfit, sans-serif; font-size: 0.76rem; font-weight: 600;">
+New recipe just dropped: Carnivore Steak and Eggs (High Protein Breakfast) → Ma…
+<div class="min-h-screen w-full flex flex-col" style="background: rgb(249, 246, 241); font-family: Outfit, sans-serif;">
+Med (≤1 hr)
+<button data-testid="filter-time-medium" tabindex="0" style="font-family: Outfit, sans-serif; font-size: 0.76rem; font-weight: 600;">
+New recipe just dropped: Carnivore Steak and Eggs (High Protein Breakfast) → Ma…
+<div class="min-h-screen w-full flex flex-col" style="background: rgb(249, 246, 241); font-family: Outfit, sans-serif;">
+Long (1+ hr)
+<button data-testid="filter-time-long" tabindex="0" style="font-family: Outfit, sans-serif; font-size: 0.76rem; font-weight: 600;">
+New recipe just dropped: Carnivore Steak and Eggs (High Protein Breakfast) → Ma…
+<div class="min-h-screen w-full flex flex-col" style="background: rgb(249, 246, 241); font-family: Outfit, sans-serif;">
+Free. No spam. Just insanely good meat recipes in your inbox.
+<p style="font-family: Outfit, sans-serif; font-size: 0.82rem;">
+Get weekly recipes from Juicy Joe 🍖 Free. No spam. Just insanely good meat rec…
+<footer style="background: rgb(10, 10, 10);">
+SUBSCRIBE FREE
+<button type="submit" style="display: inline-flex; align-items: center; gap: 0.4rem;">
+Real meat recipes from a real guy who got obsessed with getting it right. No fl…
+<p style="font-family: Outfit, sans-serif; font-size: 0.82rem;">
+Get weekly recipes from Juicy Joe 🍖 Free. No spam. Just insanely good meat rec…
+<footer style="background: rgb(10, 10, 10);">
+GUIDES & TOOLS
+<p style="font-family: Outfit, sans-serif; font-size: 0.62rem; font-weight: 800;">
+Get weekly recipes from Juicy Joe 🍖 Free. No spam. Just insanely good meat rec…
+<footer style="background: rgb(10, 10, 10);">
+🌡️ Temperature Guide
+<a href="/guides/meat-temperatures" class="hover:text-white transition-colors" style="font-family: Outfit, sans-serif; font-size: 0.82rem;">
+Get weekly recipes from Juicy Joe 🍖 Free. No spam. Just insanely good meat rec…
+<footer style="background: rgb(10, 10, 10);">
+📖 All Guides
+<a href="/resources" class="hover:text-white transition-colors" style="font-family: Outfit, sans-serif; font-size: 0.82rem;">
+Get weekly recipes from Juicy Joe 🍖 Free. No spam. Just insanely good meat rec…
+<footer style="background: rgb(10, 10, 10);">
+About Joe
+<a href="/about" class="hover:text-white transition-colors" style="font-family: Outfit, sans-serif; font-size: 0.82rem;">
+Get weekly recipes from Juicy Joe 🍖 Free. No spam. Just insanely good meat rec…
+<footer style="background: rgb(10, 10, 10);">
+Contact
+<a href="/contact" class="hover:text-white transition-colors" style="font-family: Outfit, sans-serif; font-size: 0.82rem;">
+Get weekly recipes from Juicy Joe 🍖 Free. No spam. Just insanely good meat rec…
+<footer style="background: rgb(10, 10, 10);">
+Privacy Policy
+<a href="/privacy-policy" class="hover:text-white transition-colors" style="font-family: Outfit, sans-serif; font-size: 0.82rem;">
+Get weekly recipes from Juicy Joe 🍖 Free. No spam. Just insanely good meat rec…
+<footer style="background: rgb(10, 10, 10);">
+FOLLOW JOE
+<p style="font-family: Outfit, sans-serif; font-size: 0.62rem; font-weight: 800;">
+Get weekly recipes from Juicy Joe 🍖 Free. No spam. Just insanely good meat rec…
+<footer style="background: rgb(10, 10, 10);">
+Pinterest
+<a href="/follow" class="hover:text-white transition-colors" style="font-family: Outfit, sans-serif; font-size: 0.82rem;">
+Get weekly recipes from Juicy Joe 🍖 Free. No spam. Just insanely good meat rec…
+<footer style="background: rgb(10, 10, 10);">
+Instagram
+<a href="/follow" class="hover:text-white transition-colors" style="font-family: Outfit, sans-serif; font-size: 0.82rem;">
+Get weekly recipes from Juicy Joe 🍖 Free. No spam. Just insanely good meat rec…
+<footer style="background: rgb(10, 10, 10);">
+TikTok
+<a href="/follow" class="hover:text-white transition-colors" style="font-family: Outfit, sans-serif; font-size: 0.82rem;">
+Get weekly recipes from Juicy Joe 🍖 Free. No spam. Just insanely good meat rec…
+<footer style="background: rgb(10, 10, 10);">
+Newsletter
+<a href="/newsletter" class="hover:text-white transition-colors" style="font-family: Outfit, sans-serif; font-size: 0.82rem;">
+Get weekly recipes from Juicy Joe 🍖 Free. No spam. Just insanely good meat rec…
+<footer style="background: rgb(10, 10, 10);">
+© 2026 MeatLoversHub — Built by Juicy Joe 🍖
+<p style="font-family: Outfit, sans-serif; font-size: 0.75rem;">
+Get weekly recipes from Juicy Joe 🍖 Free. No spam. Just insanely good meat rec…
+<footer style="background: rgb(10, 10, 10);">
+Privacy
+<a href="/privacy-policy" class="hover:text-white transition-colors" style="font-family: Outfit, sans-serif; font-size: 0.73rem;">
+Get weekly recipes from Juicy Joe 🍖 Free. No spam. Just insanely good meat rec…
+<footer style="background: rgb(10, 10, 10);">
+Terms
+<a href="/terms" class="hover:text-white transition-colors" style="font-family: Outfit, sans-serif; font-size: 0.73rem;">
+Get weekly recipes from Juicy Joe 🍖 Free. No spam. Just insanely good meat rec…
+<footer style="background: rgb(10, 10, 10);">
+Contact
+<a href="/contact" class="hover:text-white transition-colors" style="font-family: Outfit, sans-serif; font-size: 0.73rem;">
+Get weekly recipes from Juicy Joe 🍖 Free. No spam. Just insanely good meat rec…
+<footer style="background: rgb(10, 10, 10);">
+About Joe
+<a href="/author/juicy-joe" class="hover:text-white transition-colors" style="font-family: Outfit, sans-serif; font-size: 0.73rem;">
+Get weekly recipes from Juicy Joe 🍖 Free. No spam. Just insanely good meat rec…
+<footer style="background: rgb(10, 10, 10);">
+Editorial Policy
+<a href="/editorial-policy" class="hover:text-white transition-colors" style="font-family: Outfit, sans-serif; font-size: 0.73rem;">
+Get weekly recipes from Juicy Joe 🍖 Free. No spam. Just insanely good meat rec…
+<footer style="background: rgb(10, 10, 10);">
+Accept
+<button style="font-family: Outfit, sans-serif; font-size: 0.8rem; font-weight: 700;">
+Use these guidelines to improve the readability of your content.

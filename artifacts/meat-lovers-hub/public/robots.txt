@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Block internal Replit paths
+Disallow: /__repl*
+Disallow: /assets/
+
+# Sitemaps & feeds
+Sitemap: https://www.meatlovershub.com/sitemap.xml
+
+# RSS Feed
+# Feed: https://www.meatlovershub.com/rss.xml

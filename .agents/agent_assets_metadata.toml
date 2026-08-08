@@ -1,0 +1,8 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "75LXG7LjPWWA_KSs7w7x5"
+uri = "file://artifacts/meat-lovers-hub/wordpress-recipes-export.md"
+type = "text"
+title = "5 WordPress Recipe Articles — SEO Ready"

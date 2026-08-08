@@ -1,0 +1,186 @@
+[
+  {
+    "id": 1,
+    "category": "setup",
+    "priority": "Critical",
+    "title": "Initialize WebMCP Environment",
+    "description": "Configure the browser and local bridge to enable the Actionable Layer.",
+    "steps": [
+      "Download Chrome Canary (v134+).",
+      "Enable '#enable-webmcp' in chrome://flags.",
+      "Install the Localhost Bridge via npx: 'npx @google/webmcp-bridge'."
+    ],
+    "importance": "Foundation for agent interaction.",
+    "metrics": "'navigator.modelContext' exists.",
+    "mistakes": "Using old stable browser.",
+    "difficulty": "Easy",
+    "cost": "Free",
+    "tools": [
+      "Chrome Canary",
+      "Node.js"
+    ],
+    "status": "todo",
+    "notes": ""
+  },
+  {
+    "id": 2,
+    "category": "api",
+    "priority": "High",
+    "title": "Implement Declarative Tool API",
+    "description": "Map existing HTML forms to AI-callable tools using specialized attributes.",
+    "steps": [
+      "Add 'toolname' to form tags.",
+      "Add 'tooldescription' to explain intent.",
+      "Validate schema generation."
+    ],
+    "importance": "Zero-JS agent readiness.",
+    "metrics": "Tools registered in Inspector.",
+    "mistakes": "Vague descriptions.",
+    "difficulty": "Medium",
+    "cost": "Low",
+    "tools": [
+      "HTML5",
+      "Chrome DevTools"
+    ],
+    "status": "todo",
+    "notes": ""
+  },
+  {
+    "id": 3,
+    "category": "api",
+    "priority": "Critical",
+    "title": "Register Imperative JS Tools",
+    "description": "Expose complex logic via navigator.modelContext.registerTool().",
+    "steps": [
+      "Define async functions.",
+      "Create JSON Schema.",
+      "Register with modelContext."
+    ],
+    "importance": "For multi-step complex actions.",
+    "metrics": "Deterministic output.",
+    "mistakes": "Global scoping.",
+    "difficulty": "Hard",
+    "cost": "Moderate",
+    "tools": [
+      "JavaScript",
+      "JSON Schema"
+    ],
+    "status": "todo",
+    "notes": ""
+  },
+  {
+    "id": 4,
+    "category": "enterprise",
+    "priority": "High",
+    "title": "Secure Data with Model Armor",
+    "description": "Implement real-time screening for prompt injection and PII leakage.",
+    "steps": [
+      "Setup GCP Project.",
+      "Define security templates.",
+      "Configure injection filters."
+    ],
+    "importance": "Enterprise safety.",
+    "metrics": "Malicious prompts blocked.",
+    "mistakes": "Prompt-only security.",
+    "difficulty": "Hard",
+    "cost": "GCP Billing",
+    "tools": [
+      "GCP",
+      "Model Armor"
+    ],
+    "status": "todo",
+    "notes": ""
+  },
+  {
+    "id": 5,
+    "category": "enterprise",
+    "priority": "Medium",
+    "title": "BigQuery Remote MCP Server",
+    "description": "Allow natural language SQL queries on analytical datasets.",
+    "steps": [
+      "Enable BQ API.",
+      "Grant mcp.toolUser role.",
+      "Deploy Managed MCP."
+    ],
+    "importance": "Data democratization.",
+    "metrics": "Valid SQL generation.",
+    "mistakes": "Write-access errors.",
+    "difficulty": "Medium",
+    "cost": "BQ Usage",
+    "tools": [
+      "BigQuery",
+      "GCP"
+    ],
+    "status": "todo",
+    "notes": ""
+  },
+  {
+    "id": 6,
+    "category": "workspace",
+    "priority": "Medium",
+    "title": "Google Workspace Automation",
+    "description": "Connect agents to Gmail, Calendar, and Drive via Desktop OAuth.",
+    "steps": [
+      "Create OAuth Credentials.",
+      "Configure workspace-mcp package.",
+      "Implement Human-in-the-loop."
+    ],
+    "importance": "Office productivity.",
+    "metrics": "Summarized emails.",
+    "mistakes": "Excessive scopes.",
+    "difficulty": "Medium",
+    "cost": "Free",
+    "tools": [
+      "OAuth",
+      "GWS API"
+    ],
+    "status": "todo",
+    "notes": ""
+  },
+  {
+    "id": 7,
+    "category": "analysis",
+    "priority": "High",
+    "title": "Performance Benchmarking",
+    "description": "Measure efficiency gains of WebMCP vs traditional scraping.",
+    "steps": [
+      "Run scrape scenario.",
+      "Run WebMCP tool scenario.",
+      "Calculate token savings."
+    ],
+    "importance": "Economic viability.",
+    "metrics": "90% token reduction.",
+    "mistakes": "Ignoring latency.",
+    "difficulty": "Medium",
+    "cost": "Low",
+    "tools": [
+      "WebMCP CLI",
+      "Token Counter"
+    ],
+    "status": "todo",
+    "notes": ""
+  },
+  {
+    "id": 8,
+    "category": "analysis",
+    "priority": "Low",
+    "title": "Actiondata SEO",
+    "description": "Prepare site for Actionable Discoverability in AI search engines.",
+    "steps": [
+      "Manifest check.",
+      "Contract optimization.",
+      "Tool discoverability audit."
+    ],
+    "importance": "Future search visibility.",
+    "metrics": "High agent rank.",
+    "mistakes": "Visual-only SEO.",
+    "difficulty": "Easy",
+    "cost": "Free",
+    "tools": [
+      "Dev Console",
+      "SEO Tools"
+    ],
+    "status": "todo",
+    "notes": ""
+  }
+]

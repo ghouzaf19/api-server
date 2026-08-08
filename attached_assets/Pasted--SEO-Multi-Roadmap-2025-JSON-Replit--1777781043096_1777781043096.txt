@@ -1,0 +1,116 @@
+فهمت عليك مزيان 🔥
+بغيتي تاخذ هاد **SEO Multi Roadmap 2025 (JSON)** وتعطيه لـ Replit باش **ماشي غير يفهمو… بل يطبقو مباشرة على blog ديالك**.
+
+دابا المشكلة 👇
+Replit بوحدو غادي يشوف JSON غير كـ data ❌
+خاصك **تحولو لـ prompt تنفيذي (Executable Prompt)** باش يخدم به.
+
+أنا غادي نعطيك النسخة الصحيحة 👇
+
+---
+
+# ✅ **PROMPT باش Replit يطبق Roadmap على blog**
+
+> I have an SEO roadmap in JSON format.
+> Your job is to transform this roadmap into REAL IMPLEMENTATIONS on my blog.
+>
+> My blog: [PASTE YOUR BLOG LINK HERE]
+> Niche: Meat recipes / Carnivore diet
+>
+> ---
+>
+> ## TASK:
+>
+> Read the JSON roadmap below and for EACH task:
+>
+> 1. Analyze my current blog
+> 2. Detect gaps
+> 3. Apply improvements directly (structure, content, SEO, UX)
+> 4. Show BEFORE vs AFTER changes
+>
+> ---
+>
+> ## EXECUTION RULES:
+>
+> * Do NOT just explain → IMPLEMENT
+> * Use real examples from my blog
+> * Rewrite content when needed
+> * Keep everything SEO-optimized + human-friendly
+>
+> ---
+>
+> ## APPLY THESE STRATEGIES:
+>
+> ### 1. Information Gain Implementation
+>
+> * Add unique insights to each article
+> * Include cooking tips, personal-style notes, or comparisons
+> * Avoid generic AI content
+>
+> ### 2. Backlink Growth Parallelism
+>
+> * Suggest backlink strategy for my niche
+> * Recommend 5 websites where I can get links
+> * Align content publishing with authority growth
+>
+> ### 3. Semantic Chunking
+>
+> * Rewrite at least 1 blog post using:
+>
+>   * H2 / H3 structure
+>   * 300-word sections
+>   * Clean readable format
+>
+> ### 4. Google Discover Optimization
+>
+> * Rewrite titles to be curiosity-driven
+> * Suggest featured image ideas (high CTR)
+> * Optimize for mobile & visual appeal
+>
+> ### 5. INP Performance
+>
+> * Suggest technical improvements:
+>
+>   * Speed
+>   * Image optimization
+>   * UX improvements
+>
+> ---
+>
+> ## FINAL OUTPUT:
+>
+> * Improved homepage structure
+> * 1 fully optimized blog post (example)
+> * 10 SEO keyword ideas (carnivore niche)
+> * Pinterest strategy (titles + hooks + image ideas)
+>
+> ---
+>
+> ## ROADMAP JSON:
+>
+> [PASTE YOUR JSON HERE]
+
+---
+
+# 💡 نصيحة مهمة (ركز معايا):
+
+إلى بغيتي نتيجة قوية بزاف:
+
+دير العملية على 3 مراحل 👇
+
+1. دير هاد prompt
+2. خد النتيجة
+3. رجع قوليه:
+   👉 *“go deeper and make it more aggressive for ranking #1”*
+
+---
+
+# 🚀 إلا بغيتي نطلعوه Level آخر:
+
+نقدر نحول لك هاد roadmap كامل إلى:
+
+* ✅ خطة يومية (30 يوم)
+* ✅ Template جاهز لكل مقال
+* ✅ نظام Pinterest viral
+
+غير قولي: **“build system”** 😎

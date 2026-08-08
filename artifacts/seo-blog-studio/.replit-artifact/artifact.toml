@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/seo-studio/"
+title = "SEO Blog Studio"
+version = "1.0.0"
+id = "artifacts/seo-blog-studio"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/seo-studio/" ]
+localPort = 25481
+
+[services.development]
+run = "pnpm --filter @workspace/seo-blog-studio run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/seo-blog-studio", "run", "build" ]
+publicDir = "artifacts/seo-blog-studio/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "25481"
+BASE_PATH = "/seo-studio/"

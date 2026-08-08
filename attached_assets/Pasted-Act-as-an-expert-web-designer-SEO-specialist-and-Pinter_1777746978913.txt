@@ -1,0 +1,66 @@
+Act as an expert web designer, SEO specialist, and Pinterest growth strategist.
+
+Analyze my current recipe website and automatically improve it to make it look like a high-quality, viral food blog.
+
+Goals:
+- Make the website visually attractive (Pinterest-style)
+- Increase traffic from Pinterest and Google
+- Improve user experience and readability
+- Make it feel like a professional food brand
+
+Instructions:
+
+1. Design Improvements:
+- Upgrade the layout to a modern, clean, aesthetic food blog
+- Use a grid or masonry layout for recipes
+- Improve spacing, typography, and colors
+- Add soft shadows, rounded corners, and hover effects
+
+2. Homepage Optimization:
+- Add a hero section with a strong title and subtitle
+- Add featured recipes section
+- Add "Popular Recipes" and "Easy Recipes" sections
+
+3. Recipe Pages:
+- Convert recipes from modal popup into dedicated pages
+- Each recipe page must include:
+  - Title (H1)
+  - Large vertical image (Pinterest style)
+  - Ingredients list
+  - Step-by-step instructions
+  - "Save to Pinterest" button
+  - "More recipes you’ll love" section
+
+4. Pinterest Optimization:
+- Add Pinterest share buttons on all recipes
+- Use vertical images (2:3 ratio)
+- Add overlay text on images (example: "Easy Steak Recipe")
+- Add Open Graph and Pinterest meta tags
+
+5. SEO Optimization:
+- Add meta title and meta description for each page
+- Use proper heading structure (H1, H2, H3)
+- Add alt text to all images
+- Improve page structure for search engines
+
+6. Navigation:
+- Create a clear navbar: Home, Recipes, Categories, About
+- Add categories like Beef, Chicken, Quick Meals
+
+7. Performance:
+- Optimize images for fast loading
+- Make the site fully responsive (mobile-friendly)
+
+8. Branding:
+- Make the site feel like a strong brand (Meat Lovers Hub)
+- Use consistent colors and fonts
+- Add a simple logo text design
+
+9. Bonus:
+- Add a search bar
+- Add a newsletter section
+- Add a footer with social links
+
+Make all improvements using HTML, CSS, and JavaScript only.
+Keep the code clean, organized, and beginner-friendly.
+Explain briefly what you improved at the end.

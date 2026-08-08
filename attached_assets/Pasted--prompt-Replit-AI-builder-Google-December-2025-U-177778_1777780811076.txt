@@ -1,0 +1,104 @@
+فهمت عليك 👍
+بغيتي prompt قوي تعطيه لـ Replit (ولا أي AI builder) باش **يطبق Google December 2025 Update Audit** على blog ديالك ويصلحو.
+
+ها واحد prompt احترافي تقدر تنسخو مباشرة 👇
+
+---
+
+### **PROMPT (Advanced – Google Update Audit Fix)**
+
+> I have a blog that needs to be fully optimized according to the Google December 2025 Helpful Content & Quality Updates.
+>
+> Here is my website: [PASTE YOUR BLOG LINK HERE]
+>
+> Apply a full audit and IMPLEMENT improvements based on the following checklist:
+>
+> ---
+>
+> ### 1. Performance Gap Analysis (Search vs Discover)
+>
+> * Identify why content may not perform in Google Discover
+> * Improve emotional hooks, storytelling, and visual appeal
+> * Add engaging intros and scroll-stopping headlines
+>
+> ---
+>
+> ### 2. Authenticity & Information Gain
+>
+> * Rewrite content to be more original and helpful
+> * Add unique insights, tips, or personal-style commentary
+> * Avoid generic AI-style writing
+>
+> ---
+>
+> ### 3. Semantic Chunking Optimization
+>
+> * Break content into clear sections with optimized H2/H3 headings
+> * Use bullet points, short paragraphs, and structured layout
+> * Improve readability for both users and SEO
+>
+> ---
+>
+> ### 4. Core Web Vitals / INP Optimization
+>
+> * Improve page speed and responsiveness
+> * Optimize images (lazy loading, compression)
+> * Reduce layout shifts and improve mobile UX
+>
+> ---
+>
+> ### 5. Optimize for Citation Economy (EEAT)
+>
+> * Add credible references and useful outbound links
+> * Strengthen authority and trust signals
+> * Add author credibility and about section if missing
+>
+> ---
+>
+> ### 6. Content Perfection (AI + Human Style)
+>
+> * Rewrite content to feel natural, human, and engaging
+> * Improve clarity, tone, and flow
+> * Make content actionable and practical
+>
+> ---
+>
+> ### 7. Engagement Boost
+>
+> * Add interactive elements:
+>
+>   * FAQs
+>   * Tips boxes
+>   * “Did you know?” sections
+>   * Call-to-actions
+>
+> ---
+>
+> ### 8. Security & Manual Actions
+>
+> * Ensure no spammy practices
+> * Clean up broken links
+> * Ensure site is safe and compliant with Google policies
+>
+> ---
+>
+> ### FINAL TASK:
+>
+> * Apply all improvements directly to my blog structure and content
+> * Suggest a new homepage layout
+> * Improve at least 1 blog post as a full example
+> * Provide a list of SEO keywords for my niche (meat recipes / carnivore diet)
+>
+> Make everything optimized for:
+>
+> * Google rankings
+> * Google Discover
+> * Pinterest traffic
+> * Monetization (ads + affiliate)
+
+---
+
+💡 نصيحة صريحة:
+ماشي غير تعطيه prompt وخلاص — خاصك ترجع تشوف النتيجة وتدير **tweaks بيدك**، حيث Google دابا كيركز بزاف على **real human touch**.
+
+إذا بغيتي، عطيني link ديال blog ديالك ونطبق عليك هاد audit بنفسي 🔥

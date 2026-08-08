@@ -1,0 +1,96 @@
+فاهمك 👍 أنت ما بغيتيش Replit يبني app، غير بغيتي **يفهم ويطبق هاد SEO logic على blog ديالك**.
+
+إيوا خليه خفيف وواضح، هادي prompt مناسبة 100% للفهم فقط 👇
+
+---
+
+# 🧠 Prompt (Explain + Apply SEO Logic Only)
+
+> Act as an expert SEO strategist for 2026 AI-powered search.
+
+I already have a blog, and I want you to **analyze and improve my content strategy** using AI SEO principles.
+
+## My goal:
+
+Improve my blog SEO performance (traffic + ranking) without building any app or changing my website code.
+
+---
+
+## Do NOT:
+
+* Do not build any application
+* Do not create software or UI
+* Do not change my website structure
+
+---
+
+## What you MUST do:
+
+### 1. Explain my topical authority strategy
+
+* Identify if my blog has a clear niche or is too general
+* Suggest how to improve niche focus
+
+---
+
+### 2. Build a Topical Map (strategy only)
+
+* Suggest main pillar topics for my blog niche
+* Suggest cluster content ideas under each pillar
+
+---
+
+### 3. Internal linking strategy
+
+* Explain how I should connect my articles together
+* Suggest 2–3 internal links per topic
+
+---
+
+### 4. Content improvement (AI SEO 2026 rules)
+
+Check my strategy using:
+
+* Information Gain (what is missing vs competitors)
+* E-E-A-T (how to add real experience)
+* Engagement (how to make content more readable)
+
+---
+
+### 5. Give actionable SEO advice
+
+* What I should write next
+* What content gaps I should fill
+* What to avoid (AI-generated weak content, clickbait, etc.)
+
+---
+
+## Output format:
+
+* Simple explanation
+* Bullet points
+* Clear SEO strategy
+* No coding, no app building
+
+---
+
+## Important:
+
+Your job is ONLY to act as an SEO consultant and help me improve my blog content strategy based on 2026 Google updates.
+
+---
+
+# 💡 علاش هاد prompt أفضل ليك؟
+
+* ما غاديش يبني app ❌
+* غير غادي يفهم blog ديالك ويعطيك strategy ✔
+* كيركز على SEO الحقيقي (topical map + content plan) ✔
+
+---
+
+إلا بغيتي الخطوة الجاية، نقدر نعاونك ندير:
+👉 topical map ديال niche ديالك مباشرة
+👉 أو content plan ديال 30 يوم
+👉 أو keywords strategy باش تجيب traffic بسرعة
+
+غير قول 👍

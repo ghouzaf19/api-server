@@ -1,0 +1,79 @@
+Act as a senior web developer, SEO expert, and Pinterest growth strategist.
+
+Analyze my existing website (carnivore meat recipe blog) and fully upgrade it into a professional, high-performing food blog.
+
+GOALS:
+- Transform the site into a real blog with proper structure
+- Improve SEO for Google ranking
+- Optimize for Pinterest traffic
+- Make it visually modern and viral-ready
+
+--------------------------------------
+
+1. BLOG STRUCTURE FIX:
+- Convert all recipes into individual blog pages
+- Create clean URLs like:
+  /recipes/juicy-steak
+  /recipes/grilled-chicken
+- Create a blog homepage listing all recipes dynamically
+
+--------------------------------------
+
+2. DESIGN IMPROVEMENT:
+- Upgrade UI to a modern Pinterest-style food blog
+- Use large, high-quality vertical images (2:3 ratio)
+- Improve typography (clean, modern, readable fonts)
+- Add spacing, shadows, hover effects
+- Make layout mobile-first and fully responsive
+
+--------------------------------------
+
+3. SEO OPTIMIZATION:
+- Add meta title and meta description for every page
+- Use correct heading structure (H1, H2, H3)
+- Add keywords related to:
+  carnivore diet, meat recipes, high protein meals
+- Add alt text to all images
+- Improve internal linking between recipes
+
+--------------------------------------
+
+4. PINTEREST OPTIMIZATION:
+- Add "Save to Pinterest" button on every recipe
+- Add Open Graph tags for social sharing
+- Add overlay text on images (example: "Juicy Steak Recipe")
+- Make images highly clickable and viral-ready
+
+--------------------------------------
+
+5. CONTENT STRUCTURE:
+Each recipe page must include:
+- Title (H1)
+- Hero image
+- Ingredients list
+- Step-by-step instructions
+- Related recipes section
+- Call to action: "Save this recipe"
+
+--------------------------------------
+
+6. FEATURES TO ADD:
+- Search bar for recipes
+- Categories: Beef, Chicken, Quick Meals
+- Related recipes section
+- Simple blog navigation menu
+
+--------------------------------------
+
+7. PERFORMANCE:
+- Optimize images for fast loading
+- Clean and minimal JavaScript
+- Ensure full mobile responsiveness
+
+--------------------------------------
+
+BONUS:
+- Make the website feel like a premium viral food brand
+- Focus on engagement, readability, and Pinterest traffic
+
+After finishing, explain what improvements were made and how the blog is now structured for SEO and Pinterest growth.

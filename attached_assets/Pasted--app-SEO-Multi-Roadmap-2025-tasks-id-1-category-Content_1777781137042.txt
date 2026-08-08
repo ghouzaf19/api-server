@@ -1,0 +1,235 @@
+{
+  "app": "SEO Multi Roadmap 2025",
+  "tasks": [
+    {
+      "id": 1,
+      "category": "Content",
+      "priority": "Critical",
+      "difficulty": "Hard",
+      "cost": "Medium",
+      "tools": "Internal Data",
+      "status": "todo",
+      "notes": "",
+      "en": {
+        "title": "Information Gain Implementation",
+        "desc": "Integrate unique data points not present in existing results.",
+        "importance": "Neural Re-evaluation focuses on information gain (71% drop for copycats).",
+        "success": "Stable rankings; increased AIO citations.",
+        "steps": [
+          "Run original tests",
+          "Include verified credentials",
+          "Avoid generic summaries"
+        ],
+        "risk": "Mere aggregation."
+      },
+      "fr": {
+        "title": "Mise en œuvre du Gain d'Information",
+        "desc": "Intégrez des données uniques absentes des résultats existants.",
+        "importance": "La réévaluation neuronale se concentre sur le gain d'info (chute de 71% pour les imitateurs).",
+        "success": "Classements stables ; citations AIO accrues.",
+        "steps": [
+          "Tests originaux",
+          "Identifiants vérifiés",
+          "Éviter les résumés génériques"
+        ],
+        "risk": "Simple agrégation."
+      },
+      "ar": {
+        "title": "تنفيذ قيمة المعلومات المضافة",
+        "desc": "دمج بيانات فريدة غير موجودة في النتائج الحالية.",
+        "importance": "تركز إعادة التقييم العصبي على قيمة المعلومات (انخفاض بنسبة 71% للمحتوى المكرر).",
+        "success": "ترتيب مستقر؛ زيادة الاستشهادات في AIO.",
+        "steps": [
+          "إجراء اختبارات أصلية",
+          "إضافة بيانات اعتماد موثقة",
+          "تجنب الملخصات العامة"
+        ],
+        "risk": "مجرد تجميع للبيانات."
+      }
+    },
+    {
+      "id": 2,
+      "category": "Off-Site",
+      "priority": "Critical",
+      "difficulty": "Hard",
+      "cost": "High",
+      "tools": "Ahrefs/Rankability",
+      "status": "todo",
+      "notes": "",
+      "en": {
+        "title": "Backlink Growth Parallelism",
+        "desc": "Match publishing velocity with domain acquisition.",
+        "importance": "Scaling without links triggers trust penalties.",
+        "success": "Parallel growth curves.",
+        "steps": [
+          "Link acquisition first",
+          "Niche-relevant targets",
+          "Daily profile monitoring"
+        ],
+        "risk": "Scaling thin content."
+      },
+      "fr": {
+        "title": "Parallélisme de croissance des liens",
+        "desc": "Alignez la vitesse de publication sur l'acquisition de domaines.",
+        "importance": "Publier sans liens déclenche des pénalités de confiance.",
+        "success": "Courbes de croissance parallèles.",
+        "steps": [
+          "Acquisition de liens d'abord",
+          "Cibles thématiques",
+          "Suivi quotidien"
+        ],
+        "risk": "Publication massive de contenu faible."
+      },
+      "ar": {
+        "title": "توازي نمو الروابط الخلفية",
+        "desc": "مطابقة سرعة النشر مع وتيرة الحصول على روابط جديدة.",
+        "importance": "النشر الكثيف بدون روابط يقلل من موثوقية الموقع.",
+        "success": "منحنيات نمو متوازية.",
+        "steps": [
+          "التركيز على الروابط أولاً",
+          "استهداف مواقع متخصصة",
+          "مراقبة يومية للملف الشخصي"
+        ],
+        "risk": "نشر محتوى ضعيف بدون سلطة."
+      }
+    },
+    {
+      "id": 3,
+      "category": "AI Search",
+      "priority": "High",
+      "difficulty": "Medium",
+      "cost": "Low",
+      "tools": "ChatGPT/Perplexity",
+      "status": "todo",
+      "notes": "",
+      "en": {
+        "title": "Semantic Chunking (300-500 Tokens)",
+        "desc": "Structure content for LLM synthesis.",
+        "importance": "Proper chunking increases 'Share of SERP' in AI modules.",
+        "success": "Frequent AIO appearance.",
+        "steps": [
+          "H2/H3 logic",
+          "Self-contained 300-word blocks",
+          "Remove semantic fluff"
+        ],
+        "risk": "Unstructured walls of text."
+      },
+      "fr": {
+        "title": "Découpage Sémantique (300-500 Tokens)",
+        "desc": "Structurez le contenu pour la synthèse LLM.",
+        "importance": "Un bon découpage augmente la visibilité dans les modules d'IA.",
+        "success": "Apparition fréquente en AIO.",
+        "steps": [
+          "Logique H2/H3",
+          "Blocs de 300 mots autonomes",
+          "Supprimer le superflu"
+        ],
+        "risk": "Murs de texte non structurés."
+      },
+      "ar": {
+        "title": "التقسيم الدلالي (300-500 وحدة)",
+        "desc": "هيكلة المحتوى لتسهيل معالجة الذكاء الاصطناعي.",
+        "importance": "التقسيم الصحيح يزيد من حصة الظهور في وحدات الذكاء الاصطناعي.",
+        "success": "ظهور متكرر في AIO.",
+        "steps": [
+          "منطق H2/H3",
+          "كتل نصية مستقلة",
+          "إزالة الحشو الدلالي"
+        ],
+        "risk": "جدران نصية غير منظمة."
+      }
+    },
+    {
+      "id": 4,
+      "category": "AI Search",
+      "priority": "High",
+      "difficulty": "Medium",
+      "cost": "Low",
+      "tools": "GSC",
+      "status": "todo",
+      "notes": "",
+      "en": {
+        "title": "Google Discover Feed Strategy",
+        "desc": "Optimize for passive recommendation feeds.",
+        "importance": "Discover accounts for 67% of referrals for news sites.",
+        "success": "GSC Discover impression growth.",
+        "steps": [
+          "1200px+ High-res images",
+          "Curiosity headlines",
+          "Recency focus"
+        ],
+        "risk": "Generic stock photos."
+      },
+      "fr": {
+        "title": "Stratégie Google Discover",
+        "desc": "Optimisez pour les flux de recommandation passifs.",
+        "importance": "Discover représente 67% des visites pour l'actualité.",
+        "success": "Croissance des impressions Discover.",
+        "steps": [
+          "Images HD 1200px+",
+          "Titres basés sur la curiosité",
+          "Priorité à la fraîcheur"
+        ],
+        "risk": "Photos de stock génériques."
+      },
+      "ar": {
+        "title": "استراتيجية Google Discover",
+        "desc": "التحسين لظهور المحتوى في خلاصات التوصيات.",
+        "importance": "يمثل Discover حوالي 67% من الإحالات لمواقع الأخبار.",
+        "success": "نمو الانطباعات في تقرير Discover.",
+        "steps": [
+          "صور عالية الجودة +1200px",
+          "عناوين تثير الفضول",
+          "التركيز على الحداثة"
+        ],
+        "risk": "استخدام صور عادية."
+      }
+    },
+    {
+      "id": 5,
+      "category": "Technical",
+      "priority": "Medium",
+      "difficulty": "Hard",
+      "cost": "Variable",
+      "tools": "PSI/DevTools",
+      "status": "todo",
+      "notes": "",
+      "en": {
+        "title": "INP Performance (<200ms)",
+        "desc": "Interaction to Next Paint is the critical 2025 metric.",
+        "importance": "Visual stability threshold is strictly under 200ms.",
+        "success": "Good status in CWV.",
+        "steps": [
+          "Reduce main-thread blocking",
+          "Optimize JS interaction",
+          "Feedback loop checks"
+        ],
+        "risk": "Input lag penalties."
+      },
+      "fr": {
+        "title": "Performance INP (<200ms)",
+        "desc": "L'INP est la métrique critique de 2025.",
+        "importance": "Le seuil de stabilité visuelle est strictement inférieur à 200ms.",
+        "success": "Statut 'Bien' dans les CWV.",
+        "steps": [
+          "Réduire le blocage thread principal",
+          "Optimiser les JS",
+          "Tests de réactivité"
+        ],
+        "risk": "Pénalités liées au délai de saisie."
+      },
+      "ar": {
+        "title": "أداء INP (أقل من 200ms)",
+        "desc": "مقياس التفاعل إلى الرسم التالي هو المقياس الحاسم في 2025.",
+        "importance": "حد الاستقرار البصري يقل عن 200 مللي ثانية.",
+        "success": "حالة جيدة في CWV.",
+        "steps": [
+          "تقليل حظر الخيط الرئيسي",
+          "تحسين تفاعلات JS",
+          "فحص حلقات التغذية الراجعة"
+        ],
+        "risk": "عقوبات تأخير الإدخال."
+      }
+    }
+  ]
+}

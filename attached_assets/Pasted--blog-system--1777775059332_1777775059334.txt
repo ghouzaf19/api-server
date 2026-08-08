@@ -1,0 +1,133 @@
+فاهمك 👍 بغيت غير شي حاجة “تخدم مباشرة على blog ديالك” ماشي يبني system كبير ولا تعقيد.
+
+هادي هي **أفضل prompt مختصر وبسيط** تعطيه لـ Replit باش يخدم مباشرة على الموقع ديالك:
+
+---
+
+# ✅ SIMPLE PROMPT FOR REPLIT (DIRECT BLOG SEO IMPROVEMENT)
+
+You are a senior SEO developer.
+
+Your task is to directly improve my existing recipe blog website.
+
+Do NOT build a new system. Do NOT create extra tools.
+
+Just apply SEO improvements directly to the current blog.
+
+---
+
+# 🎯 OBJECTIVE
+
+Improve all recipe blog pages for:
+
+* Google SEO
+* Google Rich Results
+* Google Discover
+* AI / semantic search
+
+---
+
+# ⚙️ TASKS TO APPLY DIRECTLY
+
+## 1. Improve Recipe Content Structure
+
+For every recipe page:
+
+* Add clear sections:
+
+  * Introduction
+  * Ingredients
+  * Instructions (step-by-step)
+  * Tips & Variations
+  * FAQ
+
+Make content easy for Google to extract.
+
+---
+
+## 2. Add Recipe Schema (JSON-LD)
+
+Automatically add valid Recipe structured data to all recipe pages including:
+
+* name
+* description
+* image
+* author
+* prepTime
+* cookTime
+* totalTime
+* ingredients
+* instructions
+* servings
+
+Ensure schema is valid and Google-ready.
+
+---
+
+## 3. Improve SEO Titles & Meta Descriptions
+
+For each page:
+
+* Optimize title for search intent
+* Make meta description engaging and SEO-friendly
+
+---
+
+## 4. Improve E-E-A-T Signals
+
+* Add author name on every recipe
+* Add short author bio section
+* Ensure content feels real (not generic AI text)
+
+---
+
+## 5. Add FAQ Section
+
+For each recipe:
+
+* Generate 3–6 relevant FAQs
+* Add FAQ schema (FAQPage)
+
+---
+
+## 6. Improve Images SEO
+
+* Ensure each recipe has a featured image
+* Add proper alt text for SEO
+
+---
+
+## 7. Basic SEO Cleanup
+
+* Fix missing headings (H1, H2 structure)
+* Ensure mobile-friendly layout
+* Improve page readability
+
+---
+
+# 🚀 FINAL GOAL
+
+Make existing blog pages fully optimized for:
+
+* Google ranking
+* Rich snippets
+* Discover traffic
+* AI search understanding
+
+---
+
+# ❗ IMPORTANT
+
+* Do not rebuild the website
+* Do not create new systems
+* Only improve existing pages directly
+* Keep changes minimal but high-impact
+
+---
+
+إذا عطيتيه هاد prompt:
+👉 Replit غادي يخدم مباشرة على blog ديالك ويحسن الصفحات بلا ما يعقّد عليك الأمور.
+
+---
+
+إذا بغيتي، نقدر نزيد لك version أقوى فيها “auto SEO scoring لكل page” باش تشوف واش الصفحة مزيانة ولا لا 👍

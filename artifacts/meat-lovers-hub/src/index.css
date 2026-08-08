@@ -1,0 +1,464 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-card-border: hsl(var(--card-border));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-popover-border: hsl(var(--popover-border));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-primary-border: var(--primary-border);
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-secondary-border: var(--secondary-border);
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-muted-border: var(--muted-border);
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-accent-border: var(--accent-border);
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-destructive-border: var(--destructive-border);
+  --font-sans: var(--app-font-sans);
+  --font-serif: var(--app-font-serif);
+  --font-mono: var(--app-font-mono);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --background: 36 25% 97%;
+  --foreground: 20 12% 10%;
+  --card: 0 0% 100%;
+  --card-foreground: 20 12% 10%;
+  --card-border: 36 18% 90%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 20 12% 10%;
+  --popover-border: 36 18% 90%;
+  --primary: 0 85% 60%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 36 20% 93%;
+  --secondary-foreground: 20 12% 10%;
+  --muted: 36 20% 93%;
+  --muted-foreground: 20 8% 48%;
+  --accent: 36 20% 93%;
+  --accent-foreground: 20 12% 10%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 36 18% 88%;
+  --input: 36 18% 88%;
+  --ring: 0 85% 60%;
+  --radius: 1rem;
+  --app-font-sans: 'Outfit', sans-serif;
+  --app-font-serif: 'Cormorant Garamond', serif;
+  --app-font-mono: ui-monospace, monospace;
+}
+
+.dark {
+  --background: 20 10% 8%;
+  --foreground: 36 20% 94%;
+  --card: 20 10% 11%;
+  --card-foreground: 36 20% 94%;
+  --card-border: 20 10% 17%;
+  --popover: 20 10% 11%;
+  --popover-foreground: 36 20% 94%;
+  --popover-border: 20 10% 17%;
+  --primary: 0 85% 60%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 20 10% 17%;
+  --secondary-foreground: 36 20% 94%;
+  --muted: 20 10% 17%;
+  --muted-foreground: 36 12% 60%;
+  --accent: 20 10% 17%;
+  --accent-foreground: 36 20% 94%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 20 10% 19%;
+  --input: 20 10% 19%;
+  --ring: 0 85% 60%;
+}
+
+@layer base {
+  * { @apply border-border; }
+  body { @apply font-sans antialiased bg-background text-foreground; }
+  h1, h2, h3, h4, h5, h6 { @apply font-serif; }
+}
+
+/* ── Accessibility: keyboard focus ring ──────────────────────────── */
+:focus-visible {
+  outline: 2px solid #ff4d4d;
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+/* Override for dark-background elements */
+[data-dark-focus]:focus-visible {
+  outline-color: #fff;
+}
+
+/* ── Visually hidden (screen-reader only) ────────────────────────── */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Recipe card grid — responsive, consistent card heights */
+.masonry-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .masonry-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .masonry-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .masonry-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+.masonry-item {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Hide scrollbar */
+.hide-scrollbar { scrollbar-width: none; }
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+
+/* ── Print styles ── */
+.print-only { display: none; }
+
+@media print {
+  /* Hide everything that isn't the recipe content */
+  .no-print,
+  .no-print * {
+    display: none !important;
+  }
+
+  /* Show print-only elements */
+  .print-only {
+    display: block !important;
+  }
+
+  /* Page setup */
+  @page {
+    margin: 18mm 18mm 18mm 18mm;
+    size: A4;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    box-shadow: none !important;
+  }
+
+  body {
+    background: #fff !important;
+    color: #111 !important;
+    font-family: 'Outfit', sans-serif !important;
+    font-size: 11pt !important;
+  }
+
+  /* Print header */
+  .print-header {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid #111;
+    padding-bottom: 0.6rem;
+    margin-bottom: 1.4rem;
+  }
+
+  .print-header-logo {
+    font-family: 'Cormorant Garamond', serif !important;
+    font-size: 18pt !important;
+    font-weight: 600;
+    color: #111 !important;
+  }
+
+  .print-header-url {
+    font-size: 8pt !important;
+    color: #888 !important;
+  }
+
+  /* Recipe title */
+  .print-recipe-title {
+    font-family: 'Cormorant Garamond', serif !important;
+    font-size: 26pt !important;
+    font-weight: 600;
+    color: #111 !important;
+    line-height: 1.1;
+    margin: 0 0 0.5rem !important;
+  }
+
+  /* Description */
+  .print-recipe-desc {
+    font-size: 11pt !important;
+    color: #555 !important;
+    font-style: italic;
+    margin: 0 0 1rem !important;
+    line-height: 1.5;
+  }
+
+  /* Meta row */
+  .print-meta {
+    display: flex !important;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    padding: 0.65rem 0.9rem;
+    background: #f5f5f5 !important;
+    border-radius: 6px;
+    margin-bottom: 1.4rem;
+    font-size: 10pt !important;
+  }
+
+  .print-meta-item {
+    display: flex !important;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .print-meta-label { font-weight: 700; color: #333 !important; }
+  .print-meta-value { color: #555 !important; }
+
+  /* Tags */
+  .print-tags {
+    display: flex !important;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.8rem;
+  }
+
+  .print-tag {
+    font-size: 8pt !important;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #cc3333 !important;
+    padding: 0.15rem 0.5rem;
+    border: 1px solid #cc3333;
+    border-radius: 999px;
+  }
+
+  /* Two-column layout for ingredients + steps */
+  .print-columns {
+    display: grid !important;
+    grid-template-columns: 1fr 1.75fr;
+    gap: 2rem;
+    margin-top: 0.5rem;
+  }
+
+  /* Section headings */
+  .print-section-title {
+    font-family: 'Cormorant Garamond', serif !important;
+    font-size: 15pt !important;
+    font-weight: 600;
+    color: #111 !important;
+    border-bottom: 1.5px solid #ddd;
+    padding-bottom: 0.3rem;
+    margin-bottom: 0.7rem;
+    line-height: 1.2;
+  }
+
+  /* Ingredients */
+  .print-ingredients {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .print-ingredients li {
+    display: flex !important;
+    align-items: flex-start;
+    gap: 0.4rem;
+    padding: 0.3rem 0;
+    border-bottom: 0.5pt solid #eee;
+    font-size: 10pt !important;
+    color: #333 !important;
+    line-height: 1.4;
+  }
+
+  .print-ingredients li::before {
+    content: "○";
+    color: #cc3333 !important;
+    font-size: 9pt;
+    flex-shrink: 0;
+    margin-top: 0.05rem;
+  }
+
+  /* Steps */
+  .print-steps {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    counter-reset: step-counter;
+  }
+
+  .print-step {
+    display: flex !important;
+    gap: 0.6rem;
+    margin-bottom: 0.7rem;
+    font-size: 10pt !important;
+    color: #333 !important;
+    line-height: 1.5;
+    page-break-inside: avoid;
+  }
+
+  .print-step-num {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #cc3333 !important;
+    color: #fff !important;
+    font-size: 8pt !important;
+    font-weight: 700;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.1rem;
+  }
+
+  /* Print footer */
+  .print-footer {
+    margin-top: 1.5rem;
+    padding-top: 0.7rem;
+    border-top: 1pt solid #ddd;
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .print-footer-note {
+    font-size: 8pt !important;
+    color: #aaa !important;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   Meal Plan Print Styles
+   Scoped to body.printing-meal-plan so the aggressive
+   "hide everything" rule NEVER fires on recipe pages.
+   CarnivoreMealPlanPage / RecipePage add this class
+   around every window.print() call and remove it after.
+   ───────────────────────────────────────────── */
+@media print {
+  /* Hide everything — ONLY during meal-plan prints */
+  body.printing-meal-plan > * { display: none !important; }
+
+  /* Show only the meal plan sections */
+  body.printing-meal-plan #meal-plan-result,
+  body.printing-meal-plan #meal-plan-print-area,
+  body.printing-meal-plan .meal-plan-print-root {
+    display: block !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+  }
+
+  /* Reveal the meal plan section and all its children */
+  body.printing-meal-plan #meal-plan-result,
+  body.printing-meal-plan #meal-plan-result *,
+  body.printing-meal-plan #meal-plan-print-area,
+  body.printing-meal-plan #meal-plan-print-area *,
+  body.printing-meal-plan .meal-plan-print-root,
+  body.printing-meal-plan .meal-plan-print-root * {
+    visibility: visible !important;
+  }
+
+  /* Remove interactive chrome */
+  body.printing-meal-plan #meal-plan-result button,
+  body.printing-meal-plan #meal-plan-print-area button,
+  body.printing-meal-plan .meal-plan-print-root button,
+  body.printing-meal-plan [data-testid="button-carnivore-meal-plan-cta"],
+  body.printing-meal-plan [data-testid="button-generate-plan-hero"],
+  body.printing-meal-plan [data-testid="button-generate-plan-inline"] {
+    display: none !important;
+  }
+
+  /* Remove blur from locked days — print always shows all */
+  body.printing-meal-plan #meal-plan-result [style*="filter"],
+  body.printing-meal-plan #meal-plan-print-area [style*="filter"],
+  body.printing-meal-plan .meal-plan-print-root [style*="filter"] {
+    filter: none !important;
+  }
+
+  /* Remove lock overlays */
+  body.printing-meal-plan #meal-plan-result [style*="position: absolute"],
+  body.printing-meal-plan #meal-plan-print-area [style*="position: absolute"],
+  body.printing-meal-plan .meal-plan-print-root [style*="position: absolute"] {
+    display: none !important;
+  }
+
+  /* Day cards: clean borders, no shadows */
+  body.printing-meal-plan #meal-plan-result [style*="border-radius"],
+  body.printing-meal-plan #meal-plan-print-area [style*="border-radius"] {
+    box-shadow: none !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* Print header injected before the plan */
+  body.printing-meal-plan #meal-plan-result::before,
+  body.printing-meal-plan #meal-plan-print-area::before {
+    content: "Meat Lovers Hub — 7-Day Carnivore Meal Plan";
+    display: block;
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 22pt;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 6pt;
+    padding-bottom: 6pt;
+    border-bottom: 2pt solid #16a34a;
+  }
+
+  /* Print footer */
+  body.printing-meal-plan #meal-plan-result::after,
+  body.printing-meal-plan #meal-plan-print-area::after {
+    content: "meatlovershub.com/carnivore-meal-plan — Free personalised carnivore diet plans";
+    display: block;
+    font-family: "Outfit", Arial, sans-serif;
+    font-size: 7pt;
+    color: #aaa;
+    margin-top: 12pt;
+    padding-top: 6pt;
+    border-top: 1pt solid #e5e7eb;
+    text-align: center;
+  }
+}

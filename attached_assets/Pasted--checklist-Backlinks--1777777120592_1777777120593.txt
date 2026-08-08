@@ -1,0 +1,181 @@
+هاد checklist ديال Backlinks هو من النوع اللي كيبان “قوي” ولكن خاصك تكون حذر: ماشي كلشي فيه خاصو يتطبق حرفياً، حيث كاين فيه تكتيكات ممكن تكون spam إذا تدارت غلط.
+
+دابا غادي نعطيك **prompt جاهز لـ Replit** يخليه يخدم غير على اللي فعلاً مفيد لblog ديالك وبطريقة آمنة + SEO حقيقية.
+
+---
+
+# ✅ PROMPT FOR REPLIT (SEO & BACKLINK STRATEGY – SAFE IMPLEMENTATION)
+
+You are an SEO strategist specializing in ethical link building and Google-safe backlink growth.
+
+Your task is NOT to spam links or automate outreach aggressively.
+
+Your task is to build a **safe, sustainable backlink & authority strategy system** for my blog.
+
+---
+
+# 🎯 OBJECTIVE
+
+Improve domain authority and organic traffic through:
+
+* high-quality backlinks
+* content-driven link earning
+* digital PR strategies
+* competitor analysis
+* brand authority building
+
+---
+
+# ⚙️ IMPLEMENTATION TASKS
+
+## 1. Backlink Profile Analysis
+
+* Analyze existing referring domains
+* Identify:
+
+  * high authority links
+  * low quality links
+  * irrelevant links
+* Suggest improvements
+
+---
+
+## 2. Anchor Text Optimization
+
+* Analyze anchor text distribution
+* Ensure natural mix:
+
+  * branded anchors
+  * generic anchors
+  * keyword-based anchors
+* Avoid over-optimization
+
+---
+
+## 3. Linkable Asset Strategy (CRITICAL)
+
+Identify content types that naturally earn links:
+
+* ultimate guides
+* data-driven posts
+* unique recipes or insights
+* comparison articles
+
+Generate ideas for link-worthy content.
+
+---
+
+## 4. Competitor Backlink Analysis
+
+* Analyze competitors in same niche
+* Identify where they get backlinks from:
+
+  * blogs
+  * forums
+  * directories
+  * media mentions
+* Suggest replicable opportunities
+
+---
+
+## 5. Broken Link Building (SAFE VERSION)
+
+* Identify opportunities where:
+
+  * relevant sites have broken links
+  * my content can replace them
+* Suggest outreach targets
+
+---
+
+## 6. Digital PR Strategy
+
+* Create ideas for:
+
+  * shareable content
+  * expert-style articles
+  * press-worthy posts
+* Focus on organic media mentions (not spam PR blasts)
+
+---
+
+## 7. Community & Forum Backlinks
+
+* Suggest safe participation in:
+
+  * niche forums
+  * Reddit discussions
+  * cooking/recipe communities
+* Focus on value-first engagement (no spam posting)
+
+---
+
+## 8. Content Repurposing for Links
+
+* Turn blog posts into:
+
+  * guides
+  * infographics
+  * short articles
+* Increase chances of natural backlink acquisition
+
+---
+
+## 9. Lost & Unlinked Mentions
+
+* Detect opportunities where:
+
+  * brand is mentioned without link
+* Suggest outreach strategy to reclaim links
+
+---
+
+## 10. Local & Niche Citations
+
+* Suggest relevant directory listings (if applicable)
+* Focus on niche authority sites, not spam directories
+
+---
+
+# ❌ DO NOT DO
+
+* No spam backlink generation
+* No automated mass outreach
+* No fake press releases
+* No low-quality link farms
+* No PBN strategies
+
+---
+
+# 🚀 FINAL GOAL
+
+Build a **clean, Google-safe backlink strategy** that:
+
+* improves authority over time
+* attracts natural links
+* strengthens SEO rankings
+* avoids penalties or manual actions
+
+---
+
+# 🧠 RESULT EXPECTED
+
+The system should output:
+
+* backlink opportunities list
+* content ideas for link building
+* competitor insights
+* safe outreach strategies
+
+---
+
+💡 الخلاصة:
+هاد prompt غادي يخلي Replit:
+👉 يخدم لك SEO backlink strategy حقيقية وآمنة
+👉 ماشي spam
+👉 وماشي أدوات خطيرة على site ديالك
+
+---
+
+إذا بغيتي نكملو المستوى التالي:
+نقدر ندير لك “**AI Backlink Finder**” كيقلب أوتوماتيكياً على opportunities فـ niche ديالك ويعطيك daily leads 👍

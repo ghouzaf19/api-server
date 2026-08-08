@@ -1,0 +1,146 @@
+هادي نقدر نحوّلها لك مباشرة لـ **prompt بسيط وقوي** باش Replit يطبّقها على blog ديالك بلا ما يبني system جديد.
+
+---
+
+# ✅ PROMPT FOR REPLIT (Google December 2025 Update SEO Audit Fix)
+
+You are a senior SEO + performance optimization engineer.
+
+Your task is to directly audit and improve my existing blog website according to Google December 2025 update requirements.
+
+Do NOT build new systems.
+Do NOT create extra tools.
+Only apply improvements directly to existing pages.
+
+---
+
+# 🎯 OBJECTIVE
+
+Optimize the website for:
+
+* Google Search ranking
+* Google Discover performance
+* Core Web Vitals (especially INP)
+* Content authenticity and information gain
+* Safe indexing (no penalties or manual actions)
+
+---
+
+# ⚙️ REQUIRED FIXES
+
+## 1. Performance Gap Analysis (Search vs Discover)
+
+* Identify pages performing well in Search but weak in Discover
+* Improve:
+
+  * visuals
+  * headlines
+  * engagement signals
+* Optimize pages for Discover visibility
+
+---
+
+## 2. Authenticity & Information Gain
+
+* Improve content to ensure:
+
+  * real value (not generic AI text)
+  * unique insights
+  * practical experience
+* Add:
+
+  * real tips
+  * mistakes people make
+  * original explanations
+
+---
+
+## 3. Semantic Chunking Optimization
+
+* Reformat content into clear blocks:
+
+  * short sections
+  * strong headings (H2/H3)
+  * easy-to-extract passages
+* Improve readability for AI + Google extraction
+
+---
+
+## 4. Visual Stability (INP Optimization)
+
+* Improve interaction responsiveness (INP)
+* Reduce layout shifts
+* Optimize images and scripts
+* Ensure smooth mobile experience
+
+---
+
+## 5. Citation Economy Optimization
+
+* Add external authoritative references where needed
+* Ensure citations are:
+
+  * relevant
+  * minimal but strong
+* Avoid over-linking or low-quality sources
+
+---
+
+## 6. Content Refinement (Human + AI Editing)
+
+* Improve content quality by:
+
+  * removing repetition
+  * improving clarity
+  * enhancing readability
+* Ensure final content feels human-written and trustworthy
+
+---
+
+## 7. Engagement Boost
+
+* Add simple interactive elements where possible:
+
+  * FAQ sections
+  * tips boxes
+  * comments prompts
+* Increase user engagement signals
+
+---
+
+## 8. Security & Manual Action Safety
+
+* Ensure:
+
+  * no spam signals
+  * no keyword stuffing
+  * no thin content
+* Make sure website is safe for Google indexing
+
+---
+
+# 🚀 FINAL GOAL
+
+Transform existing blog into a:
+
+* high-quality Google Search performer
+* Discover-optimized content platform
+* fast and stable (INP-friendly) website
+* trusted and authentic content source
+
+---
+
+# ❗ IMPORTANT
+
+* Do NOT rebuild the website
+* Do NOT create new apps or tools
+* Only improve existing pages and code
+* Focus on SEO + performance + content quality
+
+---
+
+إذا بغيت نكون صريح معاك:
+👉 هاد 3 prompts اللي عطيتك (Reddit + Recipe + Google Update) هما فعلاً core ديال “SEO Blog Studio” ديالك
+
+وإلى خدمهم مزيان Replit:
+غادي يعطيك blog قوي بزاف بلا تعقيد 👍
