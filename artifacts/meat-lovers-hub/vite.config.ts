@@ -6,27 +6,8 @@ import fs from "fs";
 import https from "https";
 import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
 
-const rawPort = process.env.PORT;
-
-if (!rawPort) {
-  throw new Error(
-    "PORT environment variable is required but was not provided.",
-  );
-}
-
-const port = Number(rawPort);
-
-if (Number.isNaN(port) || port <= 0) {
-  throw new Error(`Invalid PORT value: "${rawPort}"`);
-}
-
-const basePath = process.env.BASE_PATH;
-
-if (!basePath) {
-  throw new Error(
-    "BASE_PATH environment variable is required but was not provided.",
-  );
-}
+const port = Number(process.env.PORT) || 3000;
+const basePath = process.env.BASE_PATH || "/";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // SEO Automation plugin — runs on every build/dev start
@@ -191,62 +172,130 @@ function sitemapPlugin(): Plugin {
       const today = new Date().toISOString().split("T")[0];
       const publicDir = path.resolve(import.meta.dirname, "public");
 
-      // ── 2. Generate sitemap.xml ──────────────────────────────────────────
+      // ── 2. Generate sitemap.xml (with Image Sitemap extension) ─────────────
+      interface ImageEntry { loc: string; title: string; caption?: string; }
       interface SitemapEntry {
         loc: string; lastmod: string; changefreq: string; priority: string;
+        images?: ImageEntry[];
+      }
+
+      // Category → representative image mapping
+      const categoryImages: Record<string, string> = {
+        "beef":        "https://images.unsplash.com/photo-1558030006-450675393462?w=1200&h=630&fit=crop&q=85",
+        "chicken":     "https://images.unsplash.com/photo-1532550907401-a500c9a57435?w=1200&h=630&fit=crop&q=85",
+        "game-meat":   "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1200&h=630&fit=crop&q=85",
+        "bbq":         "https://images.unsplash.com/photo-1544025162-d76694265947?w=1200&h=630&fit=crop&q=85",
+        "quick-meals": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=1200&h=630&fit=crop&q=85",
+      };
+
+      // Blog posts — kept in sync with the DB (add new entries here when published)
+      const blogPosts: SitemapEntry[] = [
+        {
+          loc: `${siteUrl}/blog`, lastmod: today, changefreq: "daily", priority: "0.9",
+          images: [{ loc: "https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?w=1200&h=630&fit=crop&q=85", title: "Meat &amp; BBQ Blog — Tips, Guides &amp; Expert Techniques", caption: "In-depth guides on choosing the right cut and mastering the perfect crust" }],
+        },
+        {
+          loc: `${siteUrl}/blog/bbq-rub-for-brisket`, lastmod: "2026-05-09", changefreq: "weekly", priority: "0.85",
+          images: [{ loc: "https://images.unsplash.com/photo-1558030006-450675393462?w=1200&h=630&fit=crop&q=85", title: "Best BBQ Rub for Brisket — Ultimate Pitmaster Recipe", caption: "The perfect bark-building BBQ rub recipe for competition-level brisket" }],
+        },
+        {
+          loc: `${siteUrl}/blog/steak-bites-shell-pasta-creamy-garlic`, lastmod: "2026-05-09", changefreq: "weekly", priority: "0.85",
+          images: [
+            { loc: "https://images.unsplash.com/photo-1558030006-450675393462?w=1200&h=630&fit=crop&q=85", title: "Steak Bites and Shell Pasta in Creamy Garlic Butter Alfredo Sauce", caption: "Golden seared steak bites tossed with shell pasta in garlic butter Alfredo" },
+            { loc: `${siteUrl}/blog-images/steak-bites-skillet-garlic-herbs.webp`, title: "Steak bites sizzling in cast iron with garlic and herbs" },
+            { loc: `${siteUrl}/blog-images/steak-bites-cream-sauce-skillet.webp`, title: "Creamy garlic Alfredo sauce with steak bites in skillet" },
+          ],
+        },
+        {
+          loc: `${siteUrl}/blog/dry-aging-steak-home`, lastmod: "2026-05-09", changefreq: "weekly", priority: "0.85",
+          images: [
+            { loc: "https://images.unsplash.com/photo-1558030006-450675393462?w=1200&h=630&fit=crop&q=85", title: "Ultimate Guide to Dry Aging Steak at Home" },
+            { loc: `${siteUrl}/blog-images/brisket-dry-aged-crust.webp`, title: "Dry aged brisket pelicle crust after 21 days" },
+            { loc: `${siteUrl}/blog-images/dry-ager-fridge-beef.webp`, title: "Dry aging fridge cabinet with beef hanging inside" },
+            { loc: `${siteUrl}/blog-images/dry-aging-progression-day7-21-45.webp`, title: "Dry aging beef progression at day 7, 21, and 45" },
+            { loc: `${siteUrl}/blog-images/dry-aged-ribeye-trimmed-marbled.webp`, title: "Trimmed dry aged ribeye showing intense marbling" },
+          ],
+        },
+        {
+          loc: `${siteUrl}/blog/carnivore-diet-meals-for-fat-loss`, lastmod: "2026-05-10", changefreq: "weekly", priority: "0.85",
+          images: [
+            { loc: "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=1200&h=630&fit=crop&q=85", title: "Best Carnivore Diet Meals for Fat Loss &amp; Energy", caption: "Ribeye steak and eggs — the ultimate carnivore diet meal for fat loss" },
+            { loc: "https://images.unsplash.com/photo-1558030006-450675393462?w=1200&h=630&fit=crop&q=85", title: "Carnivore diet food selection — ribeye, eggs, pork belly" },
+          ],
+        },
+      ];
+
+      function renderSitemapEntry(p: SitemapEntry): string {
+        const imgs = (p.images ?? []).map((img) =>
+          [
+            `    <image:image>`,
+            `      <image:loc>${xmlUrl(img.loc)}</image:loc>`,
+            `      <image:title>${img.title}</image:title>`,
+            img.caption ? `      <image:caption>${img.caption}</image:caption>` : "",
+            `    </image:image>`,
+          ].filter(Boolean).join("\n")
+        ).join("\n");
+        return [
+          `  <url>`,
+          `    <loc>${xmlUrl(p.loc)}</loc>`,
+          `    <lastmod>${p.lastmod}</lastmod>`,
+          `    <changefreq>${p.changefreq}</changefreq>`,
+          `    <priority>${p.priority}</priority>`,
+          imgs,
+          `  </url>`,
+        ].filter(Boolean).join("\n");
       }
 
       const allPages: SitemapEntry[] = [
         // ── Core ──────────────────────────────────────────────────────────
-        { loc: `${siteUrl}/`,                          lastmod: today, changefreq: "daily",   priority: "1.0" },
-        { loc: `${siteUrl}/recipes`,                   lastmod: today, changefreq: "weekly",  priority: "0.9" },
+        { loc: `${siteUrl}/`,       lastmod: today, changefreq: "daily",   priority: "1.0", images: [{ loc: "https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?w=1200&h=630&fit=crop&q=85", title: "Meat Lovers Hub — BBQ &amp; Grilling Recipes", caption: "Homepage hero: expertly grilled meats from Meat Lovers Hub" }] },
+        { loc: `${siteUrl}/recipes`, lastmod: today, changefreq: "weekly",  priority: "0.9", images: [{ loc: "https://images.unsplash.com/photo-1558030006-450675393462?w=1200&h=630&fit=crop&q=85", title: "All Meat Recipes — Steak, BBQ, Chicken &amp; More" }] },
 
-        // ── Landing pages (high-value SEO targets) ────────────────────────
-        { loc: `${siteUrl}/carnivore-meal-plan`,       lastmod: today, changefreq: "weekly",  priority: "0.9" },
+        // ── Landing & guides ──────────────────────────────────────────────
+        { loc: `${siteUrl}/carnivore-meal-plan`,      lastmod: today, changefreq: "weekly",  priority: "0.9" },
+        { loc: `${siteUrl}/resources`,                lastmod: today, changefreq: "monthly", priority: "0.8" },
+        { loc: `${siteUrl}/guides/meat-temperatures`, lastmod: today, changefreq: "monthly", priority: "0.85" },
 
-        // ── Guides & Resources ────────────────────────────────────────────
-        { loc: `${siteUrl}/resources`,                 lastmod: today, changefreq: "monthly", priority: "0.8" },
-        { loc: `${siteUrl}/guides/meat-temperatures`,  lastmod: today, changefreq: "monthly", priority: "0.85" },
+        // ── Blog ─────────────────────────────────────────────────────────
+        ...blogPosts,
 
         // ── Recipe categories ─────────────────────────────────────────────
         ...categorySlugs.map((slug) => ({
           loc: `${siteUrl}/recipes/category/${slug}`,
           lastmod: today, changefreq: "weekly", priority: "0.75",
+          images: categoryImages[slug] ? [{ loc: categoryImages[slug]!, title: `${slug.replace(/-/g, " ")} recipes — Meat Lovers Hub` }] : undefined,
         })),
 
-        // ── Individual recipes ────────────────────────────────────────────
+        // ── Individual recipes (with featured image) ──────────────────────
         ...recipes.map((r) => ({
           loc: `${siteUrl}/recipes/${r.id}`,
           lastmod: r.publishedAt, changefreq: "weekly", priority: "0.8",
+          images: r.image ? [{ loc: `${r.image.split("?")[0]}?w=1200&h=630&fit=crop&q=85`, title: xmlEsc(r.title), caption: xmlEsc(r.description.slice(0, 120)) }] : undefined,
         })),
 
-        // ── Author & editorial trust pages ────────────────────────────────
-        { loc: `${siteUrl}/author/juicy-joe`,          lastmod: today, changefreq: "monthly", priority: "0.7" },
-        { loc: `${siteUrl}/editorial-policy`,          lastmod: today, changefreq: "yearly",  priority: "0.5" },
-
-        // ── Contact & community ───────────────────────────────────────────
-        { loc: `${siteUrl}/newsletter`,                lastmod: today, changefreq: "monthly", priority: "0.6" },
-        { loc: `${siteUrl}/contact`,                   lastmod: today, changefreq: "yearly",  priority: "0.4" },
-        { loc: `${siteUrl}/follow`,                    lastmod: today, changefreq: "yearly",  priority: "0.35" },
-
-        // ── Legal ─────────────────────────────────────────────────────────
-        { loc: `${siteUrl}/privacy-policy`,            lastmod: today, changefreq: "yearly",  priority: "0.3" },
-        { loc: `${siteUrl}/terms`,                     lastmod: today, changefreq: "yearly",  priority: "0.3" },
+        // ── Trust & contact ───────────────────────────────────────────────
+        { loc: `${siteUrl}/author/juicy-joe`,   lastmod: today, changefreq: "monthly", priority: "0.7" },
+        { loc: `${siteUrl}/editorial-policy`,   lastmod: today, changefreq: "yearly",  priority: "0.5" },
+        { loc: `${siteUrl}/newsletter`,         lastmod: today, changefreq: "monthly", priority: "0.6" },
+        { loc: `${siteUrl}/contact`,            lastmod: today, changefreq: "yearly",  priority: "0.4" },
+        { loc: `${siteUrl}/follow`,             lastmod: today, changefreq: "yearly",  priority: "0.35" },
+        { loc: `${siteUrl}/privacy-policy`,     lastmod: today, changefreq: "yearly",  priority: "0.3" },
+        { loc: `${siteUrl}/terms`,              lastmod: today, changefreq: "yearly",  priority: "0.3" },
       ];
 
       const sitemap = [
         `<?xml version="1.0" encoding="UTF-8"?>`,
         `<!-- Auto-generated by seo-automation plugin — DO NOT EDIT MANUALLY -->`,
         `<!-- Add recipes to src/data/recipes.ts — sitemap and RSS update automatically -->`,
-        `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`,
-        ...allPages.map((p) =>
-          `  <url>\n    <loc>${xmlUrl(p.loc)}</loc>\n    <lastmod>${p.lastmod}</lastmod>\n    <changefreq>${p.changefreq}</changefreq>\n    <priority>${p.priority}</priority>\n  </url>`
-        ),
+        `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"`,
+        `        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">`,
+        ...allPages.map(renderSitemapEntry),
         `</urlset>`,
       ].join("\n");
 
       fs.writeFileSync(path.join(publicDir, "sitemap.xml"), sitemap, "utf-8");
-      console.log(`[seo] sitemap.xml → ${allPages.length} URLs (${recipes.length} recipes, ${categorySlugs.length} categories)`);
+      const imgCount = allPages.reduce((n, p) => n + (p.images?.length ?? 0), 0);
+      console.log(`[seo] sitemap.xml → ${allPages.length} URLs, ${imgCount} images (${recipes.length} recipes, ${categorySlugs.length} categories)`);
 
       // ── 3. Generate rss.xml ──────────────────────────────────────────────
       const buildDate = new Date().toUTCString();
@@ -374,10 +423,11 @@ export default defineConfig({
   build: {
     outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
+    sourcemap: false,
     rollupOptions: {
       output: {
         manualChunks: {
-          "vendor-react":  ["react", "react-dom"],
+          "vendor-react":  ["react", "react-dom", "react-router-dom"],
           "vendor-motion": ["framer-motion"],
           "vendor-charts": ["recharts"],
           "vendor-query":  ["@tanstack/react-query"],
@@ -387,6 +437,7 @@ export default defineConfig({
             "@radix-ui/react-select",
             "@radix-ui/react-accordion",
             "@radix-ui/react-tooltip",
+            "@radix-ui/react-progress",
           ],
         },
       },

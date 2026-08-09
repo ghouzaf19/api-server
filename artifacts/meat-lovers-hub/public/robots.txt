@@ -6,7 +6,7 @@ Disallow: /__repl*
 Disallow: /assets/
 
 # Sitemaps & feeds
-Sitemap: https://www.meatlovershub.com/sitemap.xml
+Sitemap: https:///sitemap.xml
 
 # RSS Feed
-# Feed: https://www.meatlovershub.com/rss.xml
+# Feed: https:///rss.xml

@@ -168,7 +168,7 @@ export function MeatTemperatureGuidePage() {
       <BreadcrumbJsonLd
         items={[
           { name: "Home", url: `${SITE_URL}/` },
-          { name: "Guides", url: `${SITE_URL}/resources` },
+          { name: "Guides", url: `${SITE_URL}/guides` },
           { name: "Meat Temperature Guide", url: pageUrl },
         ]}
       />
@@ -176,7 +176,7 @@ export function MeatTemperatureGuidePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
 
       <div style={{ background: "#F9F6F1", minHeight: "100vh", fontFamily: SS }}>
-        <SiteHeader activeNav="/resources" />
+        <SiteHeader activeNav="/guides" />
 
         {/* Hero */}
         <div style={{ background: "linear-gradient(135deg, #111 0%, #1f0a0a 100%)", padding: "4rem 1.5rem 3rem" }}>

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import type React from "react";
 import { useParams, Link } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
 import { Clock, ChefHat, Users, ArrowRight, TrendingUp, Grid3X3, BookOpen, HelpCircle, ChevronDown } from "lucide-react";
@@ -18,6 +19,105 @@ import { SITE_URL } from "@/lib/siteUrl";
 
 const SF = "'Cormorant Garamond', serif";
 const SS = "'Outfit', sans-serif";
+
+const MEAT_OPTIONS = [
+  { label: "Brisket (50% shrinkage)", value: 0.5 },
+  { label: "Pulled Pork (40% shrinkage)", value: 0.4 },
+  { label: "Ribs — bone-in (25% shrinkage)", value: 0.25 },
+  { label: "Steaks / Chops (20% shrinkage)", value: 0.2 },
+];
+
+function MeatCalculator() {
+  const [guests, setGuests] = useState(4);
+  const [shrinkage, setShrinkage] = useState(0.5);
+  const [result, setResult] = useState<number | null>(null);
+
+  function calculate() {
+    const rawWeight = (guests * 0.5) / (1 - shrinkage);
+    setResult(rawWeight);
+  }
+
+  const inputStyle: React.CSSProperties = {
+    width: "100%", padding: "10px 12px", borderRadius: "6px",
+    border: "1px solid #333", background: "#2a2a2a", color: "#fff",
+    fontFamily: SS, fontSize: "0.9rem", marginTop: "6px", boxSizing: "border-box",
+  };
+
+  return (
+    <section aria-labelledby="meat-calc-heading" style={{ marginBottom: "4rem" }}>
+      <div style={{
+        background: "#1a1a1a", color: "#fff", padding: "2rem 2rem 2rem",
+        borderRadius: "16px", border: "2px solid #CC2222",
+        boxShadow: "0 4px 24px rgba(0,0,0,0.45)", maxWidth: "480px", margin: "0 auto",
+      }}>
+        <h2 id="meat-calc-heading" style={{
+          fontFamily: SF, fontSize: "1.9rem", fontWeight: 600,
+          color: "#fff", textAlign: "center", marginBottom: "0.3rem", letterSpacing: "-0.02em",
+        }}>
+          🍖 Meat Serving Calculator
+        </h2>
+        <p style={{ fontFamily: SS, fontSize: "0.82rem", textAlign: "center", color: "#aaa", marginBottom: "1.5rem" }}>
+          How much raw meat do you actually need to buy?
+        </p>
+
+        <label style={{ fontFamily: SS, fontSize: "0.8rem", fontWeight: 600, color: "#ccc" }}>
+          Number of Guests
+          <input
+            type="number"
+            min={1}
+            value={guests}
+            onChange={(e) => { setGuests(Math.max(1, Number(e.target.value))); setResult(null); }}
+            style={inputStyle}
+          />
+        </label>
+
+        <label style={{ fontFamily: SS, fontSize: "0.8rem", fontWeight: 600, color: "#ccc", display: "block", marginTop: "1rem" }}>
+          Meat Type
+          <select
+            value={shrinkage}
+            onChange={(e) => { setShrinkage(Number(e.target.value)); setResult(null); }}
+            style={inputStyle}
+          >
+            {MEAT_OPTIONS.map((o) => (
+              <option key={o.value} value={o.value}>{o.label}</option>
+            ))}
+          </select>
+        </label>
+
+        <button
+          onClick={calculate}
+          style={{
+            width: "100%", background: "#CC2222", color: "#fff", padding: "13px",
+            border: "none", borderRadius: "8px", cursor: "pointer", fontFamily: SS,
+            fontWeight: 700, fontSize: "0.85rem", letterSpacing: "0.1em",
+            textTransform: "uppercase", marginTop: "1.25rem", transition: "background 0.15s",
+          }}
+          onMouseEnter={(e) => (e.currentTarget.style.background = "#a81b1b")}
+          onMouseLeave={(e) => (e.currentTarget.style.background = "#CC2222")}
+        >
+          Calculate Now
+        </button>
+
+        {result !== null && (
+          <div style={{
+            marginTop: "1.25rem", padding: "1.25rem", background: "#2a2a2a",
+            borderRadius: "10px", textAlign: "center",
+          }}>
+            <p style={{ fontFamily: SS, fontSize: "0.85rem", color: "#ffeb3b", margin: "0 0 0.4rem" }}>
+              You should buy approximately:
+            </p>
+            <p style={{ fontFamily: SF, fontSize: "2.8rem", fontWeight: 700, color: "#fff", margin: "0 0 0.4rem", letterSpacing: "-0.02em" }}>
+              {result.toFixed(1)} lbs
+            </p>
+            <p style={{ fontFamily: SS, fontSize: "0.75rem", color: "#777", margin: 0 }}>
+              Based on ½ lb cooked meat per person + cook loss.
+            </p>
+          </div>
+        )}
+      </div>
+    </section>
+  );
+}
 
 const DIFF_COLOR: Record<string, string> = {
   Easy: "#16a34a",
@@ -376,6 +476,9 @@ export function CategoryPage() {
               </AnimatePresence>
             )}
           </section>
+
+          {/* ── Meat Serving Calculator (BBQ only) ── */}
+          {category === "BBQ" && <MeatCalculator />}
 
           {/* ── Pillar FAQ ── */}
           <section aria-labelledby="pillar-faq-heading" style={{ marginBottom: "4rem" }}>

@@ -15,10 +15,10 @@ paths = [ "/" ]
 localPort = 21111
 
 [services.development]
-run = "pnpm --filter @workspace/meat-lovers-hub run dev"
+run = "npm run dev --workspace=@workspace/meat-lovers-hub"
 
 [services.production]
-build = [ "pnpm", "--filter", "@workspace/meat-lovers-hub", "run", "build" ]
+build = [ "npm", "run", "build", "--workspace=@workspace/meat-lovers-hub" ]
 publicDir = "artifacts/meat-lovers-hub/dist/public"
 serve = "static"
 

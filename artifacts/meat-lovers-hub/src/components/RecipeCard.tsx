@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Clock, ChevronRight } from "lucide-react";
 import { Link } from "wouter";
 import { Recipe } from "@/data/recipes";
+import { SITE_URL } from "@/lib/siteUrl";
 import { PinterestButton } from "@/components/PinterestButton";
 import { StarDisplay } from "@/components/StarRating";
 import { useRatings } from "@/hooks/useRatings";
@@ -13,7 +14,7 @@ interface RecipeCardProps {
 }
 
 export function RecipeCard({ recipe, tall = false }: RecipeCardProps) {
-  const pageUrl = `${import.meta.env.VITE_SITE_URL || "https://www.meatlovershub.com"}/recipes/${recipe.id}`;
+  const pageUrl = `${SITE_URL}/recipes/${recipe.id}`;
   const { average, count } = useRatings(recipe.id);
 
   return (

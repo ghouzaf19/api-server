@@ -8,6 +8,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SeoMeta } from "@/components/SeoMeta";
 import { BreadcrumbJsonLd } from "@/components/BreadcrumbJsonLd";
 import { SITE_URL } from "@/lib/siteUrl";
+import { heroSrc, heroSrcSet, cardSrc, cardSrcSet, HERO_SIZES, CARD_SIZES } from "@/lib/imageUrl";
 
 const SF = "'Cormorant Garamond', serif";
 const SS = "'Outfit', sans-serif";
@@ -72,19 +73,33 @@ function nicheColor(niche: string): string {
   return "#166534";
 }
 
-function nicheImage(niche: string, topic: string): string {
+/** Base Unsplash photo IDs for niche fallbacks — query params are built by imageUrl helpers */
+const NICHE_PHOTOS: Record<string, string> = {
+  beef:    "https://images.unsplash.com/photo-1558030006-450675393462",
+  chicken: "https://images.unsplash.com/photo-1532550907401-a500c9a57435",
+  bbq:     "https://images.unsplash.com/photo-1544025162-d76694265947",
+  burger:  "https://images.unsplash.com/photo-1568901346375-23c9450c58cd",
+  pork:    "https://images.unsplash.com/photo-1544025162-d76694265947",
+  default: "https://images.unsplash.com/photo-1529193591184-b1d58069ecdd",
+};
+
+function nichePhoto(niche: string, topic: string): string {
   const t = (niche + " " + topic).toLowerCase();
-  if (t.includes("beef") || t.includes("steak") || t.includes("ribeye"))
-    return "https://images.unsplash.com/photo-1558030006-450675393462?w=1400&h=600&fit=crop&q=80&auto=format";
-  if (t.includes("chicken") || t.includes("poultry"))
-    return "https://images.unsplash.com/photo-1532550907401-a500c9a57435?w=1400&h=600&fit=crop&q=80&auto=format";
-  if (t.includes("bbq") || t.includes("grill") || t.includes("smoke"))
-    return "https://images.unsplash.com/photo-1544025162-d76694265947?w=1400&h=600&fit=crop&q=80&auto=format";
-  if (t.includes("burger") || t.includes("smash"))
-    return "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=1400&h=600&fit=crop&q=80&auto=format";
-  if (t.includes("pork") || t.includes("rib") || t.includes("bacon"))
-    return "https://images.unsplash.com/photo-1544025162-d76694265947?w=1400&h=600&fit=crop&q=80&auto=format";
-  return "https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?w=1400&h=600&fit=crop&q=80&auto=format";
+  if (t.includes("beef") || t.includes("steak") || t.includes("ribeye")) return NICHE_PHOTOS.beef!;
+  if (t.includes("chicken") || t.includes("poultry")) return NICHE_PHOTOS.chicken!;
+  if (t.includes("bbq") || t.includes("grill") || t.includes("smoke")) return NICHE_PHOTOS.bbq!;
+  if (t.includes("burger") || t.includes("smash")) return NICHE_PHOTOS.burger!;
+  if (t.includes("pork") || t.includes("rib") || t.includes("bacon")) return NICHE_PHOTOS.pork!;
+  return NICHE_PHOTOS.default!;
+}
+
+/** Strip any existing query params so the URL can be a bare photo URL or a DB-stored URL */
+function toBase(url: string): string {
+  return url.split("?")[0] ?? url;
+}
+
+function nicheImage(niche: string, topic: string): string {
+  return nichePhoto(niche, topic); // bare — consumers call heroSrc/cardSrc on it
 }
 
 marked.setOptions({ gfm: true, breaks: true });
@@ -247,15 +262,18 @@ export function BlogPostPage() {
       .catch(() => {});
   }, [post?.id]);
 
-  // Preload hero image for performance
+  // Preload hero image for LCP — include imagesrcset so the browser fetches
+  // the right responsive variant immediately instead of the fallback src.
   useEffect(() => {
     if (!post) return;
-    const heroImg = post.featuredImage ?? nicheImage(post.niche, post.topic);
+    const base = toBase(post.featuredImage ?? nicheImage(post.niche, post.topic));
     const link = document.createElement("link");
     link.rel = "preload";
     link.as = "image";
-    link.href = heroImg;
+    link.href = heroSrc(base);
     link.setAttribute("fetchpriority", "high");
+    link.setAttribute("imagesrcset", heroSrcSet(base));
+    link.setAttribute("imagesizes", HERO_SIZES);
     document.head.appendChild(link);
     return () => link.remove();
   }, [post?.id]);
@@ -323,14 +341,231 @@ export function BlogPostPage() {
         "@type": "Article",
         "headline": post.title,
         "description": metaDesc,
-        "image": ogImage,
+        "image": {
+          "@type": "ImageObject",
+          "url": ogImage,
+          "width": 1200,
+          "height": 630,
+        },
         "datePublished": post.createdAt,
         "dateModified": post.updatedAt,
-        "author": { "@type": "Person", "name": "Juicy Joe", "url": `${SITE_URL}/author/juicy-joe` },
-        "publisher": { "@type": "Organization", "name": "Meat Lovers Hub", "url": SITE_URL },
+        "author": {
+          "@type": "Person",
+          "name": "Juicy Joe",
+          "url": `${SITE_URL}/author/juicy-joe`,
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Meat Lovers Hub",
+          "url": SITE_URL,
+          "logo": {
+            "@type": "ImageObject",
+            "url": `${SITE_URL}/opengraph.jpg`,
+            "width": 1200,
+            "height": 630,
+          },
+        },
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": pageUrl,
+        },
         "url": pageUrl,
-        "about": { "@type": "Thing", "name": post.topic },
+        "articleSection": post.niche,
+        "keywords": [post.niche, post.topic, "meat recipes", "BBQ", "grilling", "carnivore diet"].join(", "),
+        "wordCount": post.wordCount,
+        "inLanguage": "en-US",
+        "about": [
+          { "@type": "Thing", "name": post.topic },
+          { "@type": "Thing", "name": post.niche },
+        ],
       }) }} />
+
+      {/* ── Conditional Recipe / HowTo schema for technique-guide posts ── */}
+      {post.slug === "best-bbq-rub-for-brisket" && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "HowTo",
+          "name": post.title,
+          "description": "A pitmaster's complete guide to building the perfect BBQ brisket bark — covering three rub recipes, the science of 16-mesh pepper, salt timing, wood pairing, troubleshooting, and food-safe resting.",
+          "image": {
+            "@type": "ImageObject",
+            "url": `${SITE_URL}/blog-images/brisket-hero.jpg`,
+            "caption": "Sliced Texas-style smoked brisket with a deep mahogany bark — hero image",
+          },
+          "totalTime": "PT16H",
+          "estimatedCost": { "@type": "MonetaryAmount", "currency": "USD", "value": "12" },
+          "tool": [
+            { "@type": "HowToTool", "name": "Offset smoker or kamado" },
+            { "@type": "HowToTool", "name": "Instant-read thermometer (calibrated)" },
+            { "@type": "HowToTool", "name": "Unlined butcher paper" },
+            { "@type": "HowToTool", "name": "Insulated cooler for resting" },
+          ],
+          "supply": [
+            { "@type": "HowToSupply", "name": "Coarse kosher salt (Diamond Crystal recommended)" },
+            { "@type": "HowToSupply", "name": "16-mesh coarse black pepper" },
+            { "@type": "HowToSupply", "name": "Post oak, hickory, or cherry wood chunks" },
+            { "@type": "HowToSupply", "name": "Whole packer brisket (12–15 lb / 5.4–6.8 kg)" },
+          ],
+          "step": [
+            {
+              "@type": "HowToStep",
+              "name": "Apply the rub — salt timing is critical",
+              "text": "Apply a 50/50 mix of coarse kosher salt and 16-mesh black pepper generously to all surfaces. Rest uncovered in the refrigerator for 12–24 hours minimum. Do not go straight to the smoker — moisture must reabsorb before cooking.",
+              "image": `${SITE_URL}/blog-images/brisket-rub-application.jpg`,
+            },
+            {
+              "@type": "HowToStep",
+              "name": "Preheat smoker to 225°F (107°C)",
+              "text": "Preheat your smoker to exactly 225°F (107°C) using post oak for a classic Texas profile. Maintain this temperature throughout the unwrapped phase.",
+            },
+            {
+              "@type": "HowToStep",
+              "name": "Smoke unwrapped until bark sets at 165°F (74°C)",
+              "text": "Smoke fat-side up for 6–8 hours until the internal temperature reaches 165°F (74°C) and the bark is deep mahogany and firm to the touch. Do not wrap before the bark has set.",
+            },
+            {
+              "@type": "HowToStep",
+              "name": "Wrap and cook to probe-tender 200–205°F (93–96°C)",
+              "text": "Wrap tightly in unlined butcher paper. Return to the smoker and continue cooking until a probe slides in with zero resistance — typically at 200–205°F (93–96°C). This usually takes 4–6 more hours.",
+            },
+            {
+              "@type": "HowToStep",
+              "name": "Rest in a cooler for 2–4 hours — monitor the Danger Zone",
+              "text": "Wrap in a towel and place in an insulated cooler. Rest for a minimum of 1 hour, ideally 2–4 hours. Monitor that the brisket stays above 140°F (60°C) — the lower bound of food safety. Bacteria multiply rapidly in the 40–140°F Danger Zone.",
+              "image": `${SITE_URL}/blog-images/brisket-finished-bark.jpg`,
+            },
+          ],
+          "author": { "@type": "Person", "name": "Juicy Joe", "url": `${SITE_URL}/author/juicy-joe` },
+          "datePublished": post.createdAt,
+          "dateModified": post.updatedAt,
+          "inLanguage": "en-US",
+          "keywords": "BBQ brisket rub, 16-mesh pepper, bark formation, Texas brisket, salt timing, pitmaster guide",
+        }) }} />
+      )}
+
+      {/* ── Recipe schema for lamb rack post ── */}
+      {(post.slug === "grilled-lamb-rack-pomegranate-chimichurri" || post.slug === "lamb-rack-with-pomegranate-chimichurri-secret") && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Recipe",
+          "name": "Perfect Lamb Rack with Pomegranate Chimichurri",
+          "description": "A professional-level guide to grilling tender lamb rack with a vibrant pomegranate chimichurri sauce. Two-zone method, exact pull temperature, full silver skin and frenching technique.",
+          "author": { "@type": "Person", "name": "Juicy Joe", "url": `${SITE_URL}/author/juicy-joe` },
+          "datePublished": post.createdAt,
+          "dateModified": post.updatedAt,
+          "image": `${SITE_URL}/blog-images/lamb-chops-herbs-pomegranate-chimichurri.webp`,
+          "recipeYield": "4 servings",
+          "recipeCategory": "Main Course",
+          "recipeCuisine": "BBQ/Fusion",
+          "keywords": "rack of lamb, grilled lamb rack, pomegranate chimichurri, two-zone grilling, lamb medium rare",
+          "prepTime": "PT45M",
+          "cookTime": "PT30M",
+          "totalTime": "PT1H15M",
+          "recipeIngredient": [
+            "1 full rack of lamb (8 ribs), French-trimmed, silver skin removed",
+            "2 tbsp olive oil",
+            "1½ tsp kosher salt",
+            "1 tsp freshly cracked black pepper",
+            "1 tsp garlic powder",
+            "1 tsp fresh rosemary, finely chopped",
+            "Zest of 1 lemon",
+            "1 cup fresh flat-leaf parsley, finely chopped",
+            "¼ cup fresh mint leaves, finely chopped",
+            "3 cloves garlic, minced",
+            "2 tbsp red wine vinegar",
+            "1 tbsp fresh lemon juice",
+            "½ tsp dried chili flakes",
+            "6 tbsp extra-virgin olive oil",
+            "½ cup fresh pomegranate arils",
+          ],
+          "recipeInstructions": [
+            { "@type": "HowToStep", "position": 1, "name": "Trim and season", "text": "Remove silver skin from the loin muscle with a boning knife. French the bones clean. Rub with olive oil, salt, pepper, garlic powder, rosemary, and lemon zest. Rest uncovered in the refrigerator for 2–8 hours." },
+            { "@type": "HowToStep", "position": 2, "name": "Make chimichurri", "text": "Combine finely chopped parsley, mint, garlic, red wine vinegar, lemon juice, chili flakes, salt, and olive oil. Rest at room temperature 30–60 minutes before serving. Fold in pomegranate arils just before plating." },
+            { "@type": "HowToStep", "position": 3, "name": "Sear over direct heat", "text": "Preheat grill with two zones. Sear rack bone-side down over direct heat at 400°F for 3–4 minutes. Flip to fat side for 3–4 minutes. Sear thin edges 60 seconds each." },
+            { "@type": "HowToStep", "position": 4, "name": "Finish on indirect heat", "text": "Move rack to indirect heat zone at 250°F, bone-side down. Close lid and cook until internal temperature reaches 125°F (52°C) at the thickest part of the loin muscle, away from bone — approximately 12–18 minutes." },
+            { "@type": "HowToStep", "position": 5, "name": "Rest and serve", "text": "Tent with foil and rest 10 minutes. Slice between bones into individual chops. Spoon chimichurri over cut surfaces and serve immediately." },
+          ],
+        }) }} />
+      )}
+
+      {/* ── Recipe schema for Texas Smoked Brisket technique post ── */}
+      {post.slug === "mount-everest-bbq-mastering-tender-juicy" && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Recipe",
+          "name": "Tender & Juicy Texas-Style Smoked Brisket",
+          "description": "Learn how to master the perfect smoked brisket with a dark obsidian bark and juicy interior using the Foil Boat method, 16-mesh pepper rub, and a long rest.",
+          "author": { "@type": "Person", "name": "Juicy Joe", "url": `${SITE_URL}/author/juicy-joe` },
+          "datePublished": post.createdAt,
+          "dateModified": post.updatedAt,
+          "image": `${SITE_URL}/blog-images/perfect-brisket-slice.webp`,
+          "recipeYield": "12 servings",
+          "recipeCategory": "Main Course",
+          "recipeCuisine": "American BBQ",
+          "keywords": "smoked brisket, Texas brisket, foil boat method, brisket stall, 16-mesh pepper, beef tallow, BBQ",
+          "prepTime": "PT30M",
+          "cookTime": "PT14H",
+          "totalTime": "PT22H",
+          "recipeIngredient": [
+            "1 whole packer brisket (12–15 lbs), Choice or Prime grade",
+            "¼ cup 16-mesh coarse black pepper",
+            "¼ cup coarse kosher salt",
+            "2–4 tbsp rendered beef tallow (from trimmings)",
+          ],
+          "recipeInstructions": [
+            { "@type": "HowToStep", "position": 1, "name": "Select and trim", "text": "Choose Choice or Prime grade. Trim fat cap to ¼ inch. Do the Bend Test — a flexible raw brisket signals good marbling." },
+            { "@type": "HowToStep", "position": 2, "name": "Apply the rub", "text": "Mix 16-mesh coarse black pepper and kosher salt 50/50 by volume. Apply generously to all surfaces and press firmly. Dry-brine uncovered in the refrigerator for 12–24 hours." },
+            { "@type": "HowToStep", "position": 3, "name": "Smoke low and slow", "text": "Set smoker to 225°F–250°F with Post Oak wood. Place brisket fat-side down. Smoke until internal temp reaches 160°F–170°F and bark is set (4–6 hours)." },
+            { "@type": "HowToStep", "position": 4, "name": "Foil Boat through the stall", "text": "Fold heavy-duty foil up the sides of the brisket, leaving the top exposed. Add rendered beef tallow to the bottom of the boat. Continue smoking until probe-tender at 200°F–205°F." },
+            { "@type": "HowToStep", "position": 5, "name": "Rest before slicing", "text": "Hold in a 170°F oven (door cracked) or insulated cooler for 4–8 hours. Slice flat against the grain, point into cubes. Serve immediately." },
+          ],
+          "nutrition": {
+            "@type": "NutritionInformation",
+            "servingSize": "6 oz",
+            "proteinContent": "38g",
+            "fatContent": "22g",
+          },
+        }) }} />
+      )}
+
+      {/* ── Recipe schema for brisket rub post (Google Rich Results eligibility) ── */}
+      {post.slug === "best-bbq-rub-for-brisket" && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Recipe",
+          "name": "Pitmaster's Brisket Rub — Texas Salt & Pepper",
+          "description": "The Aaron Franklin-standard Texas brisket rub: equal parts coarse kosher salt and 16-mesh black pepper. The simplest rub and the most reliable bark.",
+          "author": { "@type": "Person", "name": "Juicy Joe", "url": `${SITE_URL}/author/juicy-joe` },
+          "datePublished": post.createdAt,
+          "dateModified": post.updatedAt,
+          "image": `${SITE_URL}/blog-images/brisket-seasoning-rub-application.webp`,
+          "recipeYield": "Enough rub for 1 full packer brisket (12–15 lb)",
+          "recipeCategory": "BBQ Seasoning",
+          "recipeCuisine": "American BBQ",
+          "keywords": "brisket rub, 16-mesh pepper, Texas brisket, bark formation, BBQ rub",
+          "prepTime": "PT5M",
+          "cookTime": "PT16H",
+          "totalTime": "PT16H5M",
+          "recipeIngredient": [
+            "¼ cup coarse kosher salt (Diamond Crystal recommended)",
+            "¼ cup 16-mesh coarse black pepper (butcher grind)",
+            "Optional: 1 tbsp smoked paprika",
+            "Optional: 1 tbsp garlic powder",
+            "Optional: 1 tbsp dark brown sugar (competition rub)",
+            "Optional: 1 tbsp finely ground espresso (espresso-chili rub)",
+          ],
+          "recipeInstructions": [
+            { "@type": "HowToStep", "position": 1, "name": "Trim fat cap", "text": "Trim the brisket fat cap to approximately ¼ inch (6mm). Too much fat blocks the rub from reaching the meat surface; too little removes the self-basting layer." },
+            { "@type": "HowToStep", "position": 2, "name": "Mix and apply rub", "text": "Combine kosher salt and 16-mesh black pepper in a 50/50 ratio by volume. Apply generously to all surfaces of the brisket — top, bottom, and sides. Press firmly so the rub adheres." },
+            { "@type": "HowToStep", "position": 3, "name": "Dry-brine overnight", "text": "Place the rubbed brisket uncovered on a wire rack in the refrigerator for 12–24 hours. The salt will draw moisture to the surface, then reabsorb — this is dry-brining, and it is the foundation of bark formation." },
+          ],
+          "nutrition": {
+            "@type": "NutritionInformation",
+            "servingSize": "1 portion",
+            "sodiumContent": "High — brisket is salted during the rub process",
+          },
+        }) }} />
+      )}
 
       <div style={{ background: "#F9F6F1", minHeight: "100vh", fontFamily: SS, display: "flex", flexDirection: "column", width: "100%", overflowX: "hidden" }}>
         <SiteHeader />
@@ -338,9 +573,14 @@ export function BlogPostPage() {
         {/* ── Hero ── */}
         <div style={{ position: "relative", overflow: "hidden", background: "#1a1008", width: "100%" }}>
           <img
-            src={heroImg}
-            alt={post.title}
+            src={heroSrc(toBase(heroImg))}
+            srcSet={heroSrcSet(toBase(heroImg))}
+            sizes={HERO_SIZES}
+            alt={`${post.title} — Meat Lovers Hub`}
             fetchPriority="high"
+            decoding="async"
+            width={1200}
+            height={514}
             style={{ width: "100%", height: "400px", objectFit: "cover", display: "block", filter: "brightness(0.35)" }}
           />
           <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 60%)" }} />
@@ -364,14 +604,6 @@ export function BlogPostPage() {
                 <span style={{ display: "flex", alignItems: "center", gap: "0.3rem", fontFamily: SS, fontSize: "0.75rem", color: "rgba(255,255,255,0.6)" }}>
                   <Clock style={{ width: "0.75rem", height: "0.75rem" }} /> {readTime(post.wordCount)}
                 </span>
-                <span style={{ display: "flex", alignItems: "center", gap: "0.3rem", fontFamily: SS, fontSize: "0.75rem", color: "rgba(255,255,255,0.6)" }}>
-                  <BookOpen style={{ width: "0.75rem", height: "0.75rem" }} /> {post.wordCount.toLocaleString()} words
-                </span>
-                {post.seoScore > 0 && (
-                  <span style={{ display: "flex", alignItems: "center", gap: "0.3rem", fontFamily: SS, fontSize: "0.75rem", color: "rgba(255,255,255,0.6)" }}>
-                    <TrendingUp style={{ width: "0.75rem", height: "0.75rem" }} /> SEO Score: {post.seoScore}
-                  </span>
-                )}
               </div>
             </div>
           </div>
@@ -425,10 +657,14 @@ export function BlogPostPage() {
                           {/* Thumbnail */}
                           <div style={{ position: "relative", aspectRatio: "16/9", overflow: "hidden", flexShrink: 0 }}>
                             <motion.img
-                              src={rImg}
-                              alt={r.title}
+                              src={cardSrc(toBase(rImg))}
+                              srcSet={cardSrcSet(toBase(rImg))}
+                              sizes={CARD_SIZES}
+                              alt={`${r.title} — Meat Lovers Hub`}
                               loading="lazy"
                               decoding="async"
+                              width={800}
+                              height={450}
                               whileHover={{ scale: 1.08 }}
                               transition={{ duration: 0.45 }}
                               style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", filter: "brightness(0.7)" }}
@@ -554,7 +790,7 @@ export function BlogPostPage() {
         .blog-content a { color: #B91C1C; text-decoration: underline; text-underline-offset: 3px; }
         .blog-content a:hover { color: #CC2222; }
         .blog-content hr { border: none; border-top: 1px solid #EAE5DC; margin: 2.5rem 0; }
-        .blog-content img { max-width: 100%; border-radius: 12px; margin: 1.5rem 0; }
+        .blog-content img { max-width: 100%; height: auto; border-radius: 12px; margin: 1.5rem 0; display: block; }
         .blog-content table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.88rem; }
         .blog-content th {
           background: #1a1008;

@@ -69,7 +69,7 @@ export function RecipePage() {
   useEffect(() => {
     if (!recipe) return;
 
-    const origin = (import.meta.env.VITE_SITE_URL as string | undefined) || "https://www.meatlovershub.com";
+    const origin = SITE_URL;
 
     const schema: Record<string, unknown> = {
       "@context": "https://schema.org",
@@ -133,32 +133,8 @@ export function RecipePage() {
     if (existing) existing.remove();
     document.head.appendChild(script);
 
-    // FAQPage schema — injected as a separate script for "People Also Ask" rich results
-    if (recipe.faq && recipe.faq.length > 0) {
-      const faqSchema = {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": recipe.faq.map(({ q, a }) => ({
-          "@type": "Question",
-          "name": q,
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": a,
-          },
-        })),
-      };
-      const faqScript = document.createElement("script");
-      faqScript.type = "application/ld+json";
-      faqScript.id = "faq-schema-jsonld";
-      faqScript.text = JSON.stringify(faqSchema);
-      const existingFaq = document.getElementById("faq-schema-jsonld");
-      if (existingFaq) existingFaq.remove();
-      document.head.appendChild(faqScript);
-    }
-
     return () => {
       document.getElementById("recipe-schema-jsonld")?.remove();
-      document.getElementById("faq-schema-jsonld")?.remove();
     };
   }, [recipe, average, count]);
 
@@ -182,7 +158,7 @@ export function RecipePage() {
     );
   }
 
-  const pageUrl = `${(import.meta.env.VITE_SITE_URL as string | undefined) || "https://www.meatlovershub.com"}/recipes/${recipe.id}`;
+  const pageUrl = `${SITE_URL}/recipes/${recipe.id}`;
 
   return (
     <>

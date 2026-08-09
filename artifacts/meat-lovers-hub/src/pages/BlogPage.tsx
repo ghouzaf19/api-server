@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
-import { Calendar, Clock, ArrowRight, BookOpen, Tag } from "lucide-react";
+import { Calendar, Clock, ArrowRight, BookOpen, Rss } from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SeoMeta } from "@/components/SeoMeta";
 import { BreadcrumbJsonLd } from "@/components/BreadcrumbJsonLd";
 import { SITE_URL } from "@/lib/siteUrl";
+import { cardSrc, cardSrcSet, CARD_SIZES } from "@/lib/imageUrl";
 
 const SF = "'Cormorant Garamond', serif";
 const SS = "'Outfit', sans-serif";
@@ -73,27 +74,43 @@ function nicheColor(niche: string): string {
   return "#166534";
 }
 
+/** Returns bare Unsplash base URL (no query params) — consumers add optimised params */
 function nicheImage(niche: string, topic: string): string {
   const t = (niche + " " + topic).toLowerCase();
   if (t.includes("beef") || t.includes("steak") || t.includes("ribeye"))
-    return "https://images.unsplash.com/photo-1558030006-450675393462?w=800&h=450&fit=crop&q=75&auto=format";
+    return "https://images.unsplash.com/photo-1558030006-450675393462";
   if (t.includes("chicken") || t.includes("poultry"))
-    return "https://images.unsplash.com/photo-1532550907401-a500c9a57435?w=800&h=450&fit=crop&q=75&auto=format";
+    return "https://images.unsplash.com/photo-1532550907401-a500c9a57435";
   if (t.includes("bbq") || t.includes("grill") || t.includes("smoke"))
-    return "https://images.unsplash.com/photo-1544025162-d76694265947?w=800&h=450&fit=crop&q=75&auto=format";
+    return "https://images.unsplash.com/photo-1544025162-d76694265947";
   if (t.includes("burger") || t.includes("smash"))
-    return "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800&h=450&fit=crop&q=75&auto=format";
+    return "https://images.unsplash.com/photo-1568901346375-23c9450c58cd";
   if (t.includes("pork") || t.includes("rib") || t.includes("bacon"))
-    return "https://images.unsplash.com/photo-1544025162-d76694265947?w=800&h=450&fit=crop&q=75&auto=format";
+    return "https://images.unsplash.com/photo-1544025162-d76694265947";
   if (t.includes("lamb") || t.includes("game") || t.includes("venison"))
-    return "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&h=450&fit=crop&q=75&auto=format";
-  return "https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?w=800&h=450&fit=crop&q=75&auto=format";
+    return "https://images.unsplash.com/photo-1555939594-58d7cb561ad1";
+  return "https://images.unsplash.com/photo-1529193591184-b1d58069ecdd";
 }
+
+const RSS_URL = "/api/seo/rss.xml";
 
 export function BlogPage() {
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    let link = document.querySelector<HTMLLinkElement>("link[rel='alternate'][type='application/rss+xml']");
+    if (!link) {
+      link = document.createElement("link");
+      link.rel = "alternate";
+      link.type = "application/rss+xml";
+      link.title = "Meat Lovers Hub Blog";
+      document.head.appendChild(link);
+    }
+    link.href = RSS_URL;
+    return () => { link?.remove(); };
+  }, []);
 
   useEffect(() => {
     fetch("/api/seo/posts")
@@ -147,6 +164,18 @@ export function BlogPage() {
             <p style={{ fontFamily: SS, fontSize: "0.95rem", color: "rgba(255,255,255,0.55)", maxWidth: "520px", lineHeight: 1.7 }}>
               Deep-dives on everything from choosing the right cut to mastering the perfect crust. Real knowledge, no fluff.
             </p>
+            <a
+              href={RSS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Subscribe to RSS feed"
+              style={{ display: "inline-flex", alignItems: "center", gap: "0.4rem", marginTop: "1.25rem", padding: "0.45rem 1rem", background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.18)", borderRadius: "999px", fontFamily: SS, fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.06em", color: "#ff8080", textDecoration: "none", transition: "background 0.2s" }}
+              onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.15)")}
+              onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.08)")}
+            >
+              <Rss style={{ width: "0.8rem", height: "0.8rem" }} />
+              RSS Feed
+            </a>
           </div>
         </div>
 
@@ -214,10 +243,14 @@ export function BlogPage() {
                           {/* Image */}
                           <div style={{ position: "relative", aspectRatio: "16/9", overflow: "hidden", flexShrink: 0 }}>
                             <motion.img
-                              src={img}
-                              alt={post.title}
-                              loading="lazy"
+                              src={cardSrc(img.split("?")[0] ?? img)}
+                              srcSet={cardSrcSet(img.split("?")[0] ?? img)}
+                              sizes={CARD_SIZES}
+                              alt={`${post.title} — Meat Lovers Hub`}
+                              loading={i === 0 ? "eager" : "lazy"}
                               decoding="async"
+                              width={800}
+                              height={450}
                               whileHover={{ scale: 1.06 }}
                               transition={{ duration: 0.4 }}
                               style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
@@ -235,10 +268,6 @@ export function BlogPage() {
                                 <Calendar style={{ width: "0.7rem", height: "0.7rem" }} />
                                 {formatDate(post.createdAt)}
                               </span>
-                              <span style={{ display: "flex", alignItems: "center", gap: "0.25rem", fontFamily: SS, fontSize: "0.68rem", color: "#bbb" }}>
-                                <Clock style={{ width: "0.7rem", height: "0.7rem" }} />
-                                {readTime(post.wordCount)}
-                              </span>
                             </div>
 
                             <h2 style={{ fontFamily: SF, fontSize: "1.25rem", fontWeight: 700, color: "#111", lineHeight: 1.2, letterSpacing: "-0.01em", marginBottom: "0.6rem", overflow: "hidden", display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical" }}>
@@ -249,15 +278,10 @@ export function BlogPage() {
                               {excerpt}
                             </p>
 
-                            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                            <div style={{ display: "flex", alignItems: "center" }}>
                               <span style={{ display: "flex", alignItems: "center", gap: "0.3rem", fontFamily: SS, fontSize: "0.78rem", fontWeight: 700, color: color }}>
                                 Read Article <ArrowRight style={{ width: "0.7rem", height: "0.7rem" }} />
                               </span>
-                              {post.seoScore > 0 && (
-                                <span style={{ fontFamily: SS, fontSize: "0.65rem", fontWeight: 700, color: post.seoScore >= 80 ? "#166534" : post.seoScore >= 60 ? "#B45309" : "#888", background: post.seoScore >= 80 ? "#dcfce7" : post.seoScore >= 60 ? "#fef3c7" : "#f3f4f6", padding: "0.2rem 0.5rem", borderRadius: "999px" }}>
-                                  SEO {post.seoScore}
-                                </span>
-                              )}
                             </div>
                           </div>
                         </motion.div>
